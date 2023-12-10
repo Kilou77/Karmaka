@@ -1,9 +1,8 @@
-package com.lo02.Karmaka;
+package com.lo02.Karmaka.cards;
 
 public abstract class Cards {
     private String name;
     private int points;
-    private enum color {mosaic, red, blue, green};
 
     public Cards(){
 

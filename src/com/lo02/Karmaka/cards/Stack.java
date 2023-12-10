@@ -1,4 +1,4 @@
-package com.lo02.Karmaka;
+package com.lo02.Karmaka.cards;
 
 public class Stack {
     private String name;
