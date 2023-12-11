@@ -17,17 +17,19 @@ public class Game {
     public void save(){
 
     }
+    public void init(){
+        // Initialisation de la partie
+        this.player1 = new Player();
+        this.player2 = new Player();
+        this.well = new Stack();
+        this.ruins = new Stack();
+        start();
+    }
     public void start(){
 
 
     }
     public void end(){
 
-    }
-    public void init(){
-        this.player1 = new Player();
-        this.player2 = new Player();
-        this.well = new Stack();
-        this.ruins = new Stack();
     }
 }
