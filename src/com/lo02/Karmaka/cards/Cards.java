@@ -8,6 +8,7 @@ public abstract class Cards {
 
     }
     public abstract void activate();
+
     public void playForPoints(){
 
     }
