@@ -12,7 +12,7 @@ public abstract class Cards {
     public void playForPoints(){
 
     }
-    public void playFuturLife(){
+    public void playFutureLife(){
 
     }
 }

@@ -1,16 +1,19 @@
 package com.lo02.Karmaka.cards;
 
+import java.util.ArrayList;
+
 public class Stack {
-    private String name;
-    private int count;
+    private final ArrayList<Cards> cards;
 
     public Stack(){
-
+        this.cards = new ArrayList<Cards>();
     }
-    public void addCards(){
-
+    public void addCards(Cards card){
+        cards.add(card);
     }
-    public void takeCards(){
-
+    public Cards takeCards(){
+        Cards card = cards.getFirst();
+        cards.remove(card);
+        return card;
     }
 }
