@@ -6,22 +6,30 @@ import com.lo02.Karmaka.cards.Stack;
 import com.lo02.Karmaka.enums.KarmicScale;
 
 import java.util.List;
+import java.util.ArrayList;
 
 
-class Player {
+
+public class Player {
     private String name;
     private final Stack futureLife;
-    private final Stack hand;
-    private int karmicRing;
-    private KarmicScale karmicScale;
-    public Player(){
-        askname();
+    private final Stack deeds;
+    private final List<Card> hand;
+    private final Stack deck;
+    private final int karmicRing;
+    private final KarmicScale karmicScale;
+
+    public Player() {
+        askName();
         this.karmicScale = KarmicScale.DUNG_BEETLE;
         this.futureLife = new Stack();
-        this.hand = new Stack();
+        this.deeds = new Stack();
+        this.hand = new ArrayList<>();
         this.karmicRing = 0;
+        this.deck=new Stack();
     }
-    public void askname(){
+
+    public void askName() {
         String sc = null;
         while (sc == null) {
             System.out.println("Veuillez entrer le nom du joueur => ");
@@ -78,5 +86,21 @@ class Player {
 
     public void reborn() {
 
+    }
+
+    public List<Card> getHand() {
+        return hand;
+    }
+
+    public Stack getDeck() {
+        return deck;
+    }
+
+    public Stack getDeeds() {
+        return deeds;
+    }
+
+    public Stack getFutureLife() {
+        return futureLife;
     }
 }
