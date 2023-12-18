@@ -9,15 +9,11 @@ public class Game {
     private Player activePlayer;
     private Stack well;
     private Stack ruins;
+    private CardManager cardManager = new CardManager();
 
 
-    public Game(){
-        init();
-    }
-    public void save(){
 
-    }
-    public void init(){
+    public void init() {
         // Initialisation de la partie
         this.player1 = new Player();
         this.player2 = new Player();
@@ -25,11 +21,21 @@ public class Game {
         this.ruins = new Stack();
         start();
     }
-    public void start(){
+
+    public void start() {
+        activePlayer = (Main.getRandom().nextInt(2) == 1) ? player1 : player2;
+        while (true) {
+            //TOUR
+            activePlayer.playTurn();
+
+            //Fin du tour, changement de joueur
+            this.activePlayer = (activePlayer==player1) ? player2 : player1;
+        }
 
 
     }
-    public void end(){
+
+    public void end() {
 
     }
 }

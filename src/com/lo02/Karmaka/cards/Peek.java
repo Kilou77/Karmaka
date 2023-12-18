@@ -2,10 +2,10 @@ package com.lo02.Karmaka.cards;
 
 import com.lo02.Karmaka.enums.Color;
 
-public class Peek extends Cards {
+public class Peek extends Card {
 
-    public Peek(){
-        super("Coup d'Oeil",1, Color.BLUE);
+    public Peek() {
+        super("Coup d'Oeil", 1, Color.BLUE,"");
     }
 
     @Override

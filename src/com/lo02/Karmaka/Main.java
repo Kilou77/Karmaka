@@ -8,24 +8,36 @@ import java.util.Scanner;
 // then press Enter. You can now see whitespace characters in your code.
 public class Main {
     private static Main instance;
-    private static Scanner scanner = new Scanner(System.in);
-    private Game game;
+    private static final Scanner scanner = new Scanner(System.in);
+    private final Game game;
     private String name;
 
 
-    private Main(){
+    private Main() {
         this.game = new Game();
 
     }
 
-    public static Main getInstance(){
-        if(null == instance){
+    public static Main getInstance() {
+        if (null == instance) {
             instance = new Main();
         }
         return instance;
     }
 
-    public static void main(String[] args) {getInstance();}
+    public static void main(String[] args) {
+        getInstance();
+    }
 
-    public static Scanner getScanner() {return scanner;}
+    public static Scanner getScanner() {
+        return scanner;
+    }
+
+    public Game getGame() {
+        return game;
+    }
+
+    public static Random getRandom() {
+        return random;
+    }
 }
