@@ -2,6 +2,7 @@ package com.lo02.Karmaka;
 
 import com.lo02.Karmaka.objects.Game;
 
+import java.util.Random;
 import java.util.Scanner;
 
 // Press Shift twice to open the Search Everywhere dialog and type `show whitespaces`,
@@ -11,11 +12,11 @@ public class Main {
     private static final Scanner scanner = new Scanner(System.in);
     private final Game game;
     private String name;
-
+    private static final Random random = new Random();
 
     private Main() {
         this.game = new Game();
-
+        this.game.init();
     }
 
     public static Main getInstance() {
@@ -23,6 +24,10 @@ public class Main {
             instance = new Main();
         }
         return instance;
+    }
+
+    public void save() {
+
     }
 
     public static void main(String[] args) {
