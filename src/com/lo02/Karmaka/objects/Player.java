@@ -3,11 +3,13 @@ package com.lo02.Karmaka.objects;
 import com.lo02.Karmaka.Main;
 import com.lo02.Karmaka.cards.Card;
 import com.lo02.Karmaka.cards.Stack;
+import com.lo02.Karmaka.enums.Color;
 import com.lo02.Karmaka.enums.KarmicScale;
 
 import java.util.List;
 import java.util.ArrayList;
 
+import static sun.swing.MenuItemLayoutHelper.max;
 
 
 public class Player {
@@ -16,8 +18,8 @@ public class Player {
     private final Stack deeds;
     private final List<Card> hand;
     private final Stack deck;
-    private final int karmicRing;
-    private final KarmicScale karmicScale;
+    private int karmicRing;
+    private KarmicScale karmicScale;
 
     public Player() {
         askName();
@@ -49,7 +51,7 @@ public class Player {
         if (!deck.getCards().isEmpty()) {
             Card c = deck.takeCard();
             hand.add(c);
-            System.out.println("Vous avez piocher une carte : " + c.getName());
+            System.out.println("Vous avez pioché une carte : " + c.getName());
         } else {
             if (hand.isEmpty()) {
                 reborn();
@@ -67,8 +69,8 @@ public class Player {
             sc = Main.getScanner().nextLine();
             if(hand.indexOf(c) == Integer.parseInt(sc) ){
                 c = hand.get(Integer.parseInt(sc));
-                System.out.println("Voici la description de la carte. Etes vous sûr OUI/NON?");
-                System.out.println(c.getName() + "et le description est la suivante :" + c.getDescription());
+                System.out.println("Voici la description de la carte. Êtes-vous sûr ? OUI/NON");
+                System.out.println(c.getName() + "et la description est la suivante :" + c.getDescription());
                 if(sc.equals("OUI")){
 
                 }
@@ -85,7 +87,30 @@ public class Player {
     }
 
     public void reborn() {
+        int redPoints=0;
+        int bluePoints=0;
+        int greenPoints=0;
+        int mosaicPoints=0;
+        for (Card card : deeds.getCards()) {
+            switch (card.getColor()) {
+                case RED -> redPoints += card.getPoints();
+                case BLUE -> bluePoints += card.getPoints();
+                case GREEN -> greenPoints += card.getPoints();
+                case MOSAIC -> {
+                    redPoints += card.getPoints();
+                    bluePoints += card.getPoints();
+                    greenPoints += card.getPoints();
+                }
+            }
+        }
+        int maxPoints = Math.max(redPoints, Math.max (bluePoints, greenPoints));
+        int karmicLevel = karmicScale.getValue();
 
+        if (maxPoints > karmicLevel) {
+            this.karmicScale = KarmicScale.values()[karmicScale.ordinal() + 1];
+        } else {
+            this.karmicRing++;
+        }
     }
 
     public List<Card> getHand() {

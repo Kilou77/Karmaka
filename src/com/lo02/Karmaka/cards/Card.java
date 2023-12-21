@@ -39,4 +39,11 @@ public abstract class Card {
         return description;
     }
 
+    public int getPoints() {
+        return points;
+    }
+
+    public Color getColor() {
+        return color;
+    }
 }
