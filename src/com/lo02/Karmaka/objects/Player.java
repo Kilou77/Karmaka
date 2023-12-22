@@ -65,13 +65,27 @@ public class Player {
         while (c == null || pass) {
             //TODO
             String sc = null;
-            System.out.println("Veuillez choisir le numéro associé à la carté présente dans votre main : ");
+            System.out.println("Veuillez choisir le numéro associé à la carte présente dans votre main : ");
             sc = Main.getScanner().nextLine();
             if(hand.indexOf(c) == Integer.parseInt(sc) ){
                 c = hand.get(Integer.parseInt(sc));
                 System.out.println("Voici la description de la carte. Êtes-vous sûr ? OUI/NON");
                 System.out.println(c.getName() + "et la description est la suivante :" + c.getDescription());
+                sc = Main.getScanner().nextLine();
                 if(sc.equals("OUI")){
+                    System.out.println("1 : Jouer cette carte pour les points");
+                    System.out.println("2 : Jouer cette carte pour son pouvoir");
+                    System.out.println("3 : Garder cette carte pour sa prochaine vie");
+                    System.out.println("4 : Défausser cette carte");
+                    switch (sc){
+                        case "1" -> c.playForPoints(this);
+                         case "2" -> c.activate();
+                         case "3" -> c.playFutureLife();
+                         case "4" -> {hand.remove(c);
+
+                    }
+
+                }else {
 
                 }
             }
