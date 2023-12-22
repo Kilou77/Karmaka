@@ -83,10 +83,10 @@ public class Player {
 
                         }
 
+                    }
                 }else {
 
                 }
-            }
 
                 //Faire choisir une carte à l'utilisateur
                 //Donner la description
