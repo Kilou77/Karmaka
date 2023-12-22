@@ -77,14 +77,14 @@ public class Player {
                     switch (sc) {
                         case "1" -> c.playForPoints(this);
                         case "2" -> c.activate();
-                        case "3" -> c.playFutureLife();
+                        case "3" -> c.playFutureLife(this);
                         case "4" -> {
                             hand.remove(c);
 
                         }
 
                     }
-                }else {
+                } else {
 
                 }
 
@@ -96,6 +96,7 @@ public class Player {
 
             }
         }
+    }
 
         public void reborn () {
             int redPoints = 0;
@@ -139,4 +140,5 @@ public class Player {
         public Stack getFutureLife () {
             return futureLife;
         }
-    }
+
+}

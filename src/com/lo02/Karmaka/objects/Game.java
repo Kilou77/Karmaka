@@ -42,7 +42,6 @@ public class Game {
         while (true) {
             //TOUR
             activePlayer.playTurn();
-
             //Fin du tour, changement de joueur
             this.activePlayer = (activePlayer==player1) ? player2 : player1;
         }
