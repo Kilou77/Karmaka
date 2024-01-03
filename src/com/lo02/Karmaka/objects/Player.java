@@ -35,6 +35,7 @@ public class Player {
             sc = Main.getScanner().nextLine();
         }
         this.name = sc;
+        sc = null;
     }
 
     public void playTurn() {
@@ -48,7 +49,7 @@ public class Player {
         if (!deck.getCards().isEmpty()) {
             Card c = deck.takeCard();
             hand.add(c);
-            System.out.println("Vous avez pioché une carte : " + c.getName());
+            System.out.println("Vous avez pioché la carte : " + c.getName() + " dans la Source.");
         } else {
             if (hand.isEmpty()) {
                 reborn();
@@ -64,81 +65,90 @@ public class Player {
             String sc = null;
             System.out.println("Veuillez choisir le numéro associé à la carte présente dans votre main : ");
             sc = Main.getScanner().nextLine();
-            if (hand.indexOf(c) == Integer.parseInt(sc)) {
-                c = hand.get(Integer.parseInt(sc));
-                System.out.println("Voici la description de la carte. Êtes-vous sûr ? OUI/NON");
-                System.out.println(c.getName() + "et la description est la suivante :" + c.getDescription());
+            c = hand.get(Integer.parseInt(sc));
+            System.out.print("Voici la description de la carte: ");
+            System.out.println(c.getName() + " : " + c.getDescription());
+            System.out.println("Etes vous sûr de jouer cette carte ? O/n ");
+            String test = null;
+            while (!(test == "1")){
                 sc = Main.getScanner().nextLine();
-                if (sc.equals("OUI")) {
+                if (sc.equals("O")|| sc.equals("o")) {
                     System.out.println("1 : Jouer cette carte pour les points");
                     System.out.println("2 : Jouer cette carte pour son pouvoir");
                     System.out.println("3 : Garder cette carte pour sa prochaine vie");
                     System.out.println("4 : Défausser cette carte");
+                    sc = null;
+                    sc = Main.getScanner().nextLine();
                     switch (sc) {
                         case "1" -> c.playForPoints(this);
                         case "2" -> c.activate();
                         case "3" -> c.playFutureLife(this);
                         case "4" -> {
                             hand.remove(c);
-
+                            System.out.println("La carte " + c.getName() + " a été défaussée de votre main");
                         }
-
                     }
-                } else {
-
+                    test ="1";
+                } else if (sc.equals("N") || sc.equals("n")){
+                    System.out.println("Veuillez choisir une autre carte");
+                    sc = null;
                 }
-
-                //Faire choisir une carte à l'utilisateur
-                //Donner la description
-                //Lui demander confirmation de l'utilisation ou remettre c à null
-                // proposer sauvegarde
-
-
+                else if(!sc.equals("O")|| !sc.equals("o")||!sc.equals("N")||!sc.equals("n") ){
+                    System.out.println("Mauvaise entrée, veuillez recommencer svp");
+                    sc = null;
+                }
             }
+
+
+            //Faire choisir une carte à l'utilisateur
+            //Donner la description
+            //Lui demander confirmation de l'utilisation ou remettre c à null
+            // proposer sauvegarde
+            // gestion des exceptions pour le scanner
         }
     }
 
-        public void reborn () {
-            int redPoints = 0;
-            int bluePoints = 0;
-            int greenPoints = 0;
-            int mosaicPoints = 0;
-            for (Card card : deeds.getCards()) {
-                switch (card.getColor()) {
-                    case RED -> redPoints += card.getPoints();
-                    case BLUE -> bluePoints += card.getPoints();
-                    case GREEN -> greenPoints += card.getPoints();
-                    case MOSAIC -> {
-                        redPoints += card.getPoints();
-                        bluePoints += card.getPoints();
-                        greenPoints += card.getPoints();
-                    }
+    public void reborn() {
+        int redPoints = 0;
+        int bluePoints = 0;
+        int greenPoints = 0;
+        int mosaicPoints = 0;
+        for (Card card : deeds.getCards()) {
+            switch (card.getColor()) {
+                case RED -> redPoints += card.getPoints();
+                case BLUE -> bluePoints += card.getPoints();
+                case GREEN -> greenPoints += card.getPoints();
+                case MOSAIC -> {
+                    redPoints += card.getPoints();
+                    bluePoints += card.getPoints();
+                    greenPoints += card.getPoints();
                 }
             }
-            int maxPoints = Math.max(redPoints, Math.max(bluePoints, greenPoints));
-            int karmicLevel = karmicScale.getValue();
-
-            if (maxPoints > karmicLevel) {
-                this.karmicScale = KarmicScale.values()[karmicScale.ordinal() + 1];
-            } else {
-                this.karmicRing++;
-            }
         }
+        int maxPoints = Math.max(redPoints, Math.max(bluePoints, greenPoints));
+        int karmicLevel = karmicScale.getValue();
 
-        public List<Card> getHand () {
-            return hand;
+        if (maxPoints > karmicLevel) {
+            this.karmicScale = KarmicScale.values()[karmicScale.ordinal() + 1];
+        } else {
+            this.karmicRing++;
         }
+    }
 
-        public Stack getDeck () {
-            return deck;
-        }
+    public List<Card> getHand() {
+        return hand;
+    }
 
-        public Stack getDeeds () {
-            return deeds;
-        }
+    public Stack getDeck() {
+        return deck;
+    }
 
-        public Stack getFutureLife () {
-            return futureLife;
-        }
+    public Stack getDeeds() {
+        return deeds;
+    }
+
+    public Stack getFutureLife() {
+        return futureLife;
+    }
 
 }

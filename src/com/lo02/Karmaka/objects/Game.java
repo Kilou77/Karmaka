@@ -41,6 +41,7 @@ public class Game {
         activePlayer = (Main.getRandom().nextInt(2) == 1) ? player1 : player2;
         while (true) {
             //TOUR
+            System.out.println("****************************************************************************************");
             activePlayer.playTurn();
             //Fin du tour, changement de joueur
             this.activePlayer = (activePlayer==player1) ? player2 : player1;

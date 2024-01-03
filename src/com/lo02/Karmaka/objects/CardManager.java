@@ -1,10 +1,7 @@
 package com.lo02.Karmaka.objects;
 
 import com.lo02.Karmaka.Main;
-import com.lo02.Karmaka.cards.Card;
-import com.lo02.Karmaka.cards.Denial;
-import com.lo02.Karmaka.cards.Peek;
-import com.lo02.Karmaka.cards.StolenDreams;
+import com.lo02.Karmaka.cards.*;
 
 import java.lang.reflect.InvocationTargetException;
 import java.util.HashMap;
@@ -19,8 +16,8 @@ public class CardManager {
     }
 
     public void initCardList() {
-        cardList.put(Denial.class, 3);
-        /* cardList.put(Dwindle.class, 3);
+        cardList.put(Denial.class, 12);
+        /*cardList.put(Dwindle.class, 3);
         cardList.put(Peek.class, 3);
         cardList.put(StolenDreams.class, 3);
         cardList.put(Thievery.class, 2);

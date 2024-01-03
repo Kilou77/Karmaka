@@ -16,7 +16,6 @@ public class Main {
 
     private Main() {
         this.game = new Game();
-        this.game.init();
     }
 
     public static Main getInstance() {
@@ -31,7 +30,7 @@ public class Main {
     }
 
     public static void main(String[] args) {
-        getInstance();
+        getInstance().getGame().init();
     }
 
     public static Scanner getScanner() {

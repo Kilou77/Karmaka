@@ -22,13 +22,16 @@ public abstract class Card {
         if (player.getHand().contains(this)){
             player.getHand().remove(this);
             player.getDeeds().addCard(this);
+            System.out.println("Vous avez disposé la carte: " + this.getName() + " dans vos oeuvres");
         }
+
     }
 
     public void playFutureLife(Player player) {
         if (player.getHand().contains(this)){
             player.getHand().remove(this);
             player.getFutureLife().addCard(this);
+            System.out.println("Vous avez ajouté la carte: " + this.getName() + " à votre vie future");
         }
     }
 
