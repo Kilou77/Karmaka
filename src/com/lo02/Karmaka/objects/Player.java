@@ -38,7 +38,7 @@ public class Player {
         sc = null;
     }
 
-    public void playTurn() {
+    public void drawCard() {
         StringBuilder txt = new StringBuilder();
         for (Card card : hand) {
             txt.append(" ").append(hand.indexOf(card)).append(") ").append(card.getName());
@@ -58,6 +58,9 @@ public class Player {
                 System.out.println("Votre pile est vide, par conséquent, vous n'avez pas pioché");
             }
         }
+    }
+
+    public void playCard() {
         Card c = null;
         boolean pass = false;
         while (c == null || pass) {
@@ -92,10 +95,12 @@ public class Player {
                 } else if (sc.equals("N") || sc.equals("n")){
                     System.out.println("Veuillez choisir une autre carte");
                     sc = null;
+                    playCard();
                 }
                 else if(!sc.equals("O")|| !sc.equals("o")||!sc.equals("N")||!sc.equals("n") ){
                     System.out.println("Mauvaise entrée, veuillez recommencer svp");
                     sc = null;
+                    playCard();
                 }
             }
 
@@ -103,9 +108,13 @@ public class Player {
             //Faire choisir une carte à l'utilisateur
             //Donner la description
             //Lui demander confirmation de l'utilisation ou remettre c à null
-            // proposer sauvegarde
             // gestion des exceptions pour le scanner
         }
+    }
+    public void playTurn() {
+        drawCard(); //Fait piocher une carte à l'utilisateur
+        playCard(); //Fait jouer la carte de son choix à l'utilisateur
+        // proposer sauvegarde
     }
 
     public void reborn() {
