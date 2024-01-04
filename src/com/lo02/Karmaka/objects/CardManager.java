@@ -9,6 +9,7 @@ import java.util.HashMap;
 public class CardManager {
 
     HashMap<Class<? extends Card>, Integer> cardList = new HashMap<>();
+    /*Création de la HashMap contenant l'ensemble des cartes du jeu*/
 
     public void init() {
         initCardList();
