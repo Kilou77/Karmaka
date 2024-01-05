@@ -39,17 +39,11 @@ public class Player {
     }
 
     public void drawCard() {
-        StringBuilder txt = new StringBuilder();
-        for (Card card : hand) {
-            txt.append(" ").append(hand.indexOf(card)).append(") ").append(card.getName());
-        }
         System.out.println("C'est votre tour " + name + " !");
-        System.out.println("Votre main est composée de : " + txt);
-
         if (!deck.getCards().isEmpty()) {
             Card c = deck.takeCard();
             hand.add(c);
-            System.out.println("Vous avez pioché la carte : " + c.getName() + " dans la Source.");
+            System.out.println("Vous avez pioché la carte : " + c.getName() + " dans la Source. Elle sera placée en dernière position dans votre main.");
         } else {
             if (hand.isEmpty()) {
                 reborn();
@@ -65,6 +59,13 @@ public class Player {
         boolean pass = false;
         while (c == null || pass) {
             //TODO
+            // show what is in the active player's hand
+            StringBuilder txt = new StringBuilder();
+            for (Card card : hand) {
+                txt.append(" ").append(hand.indexOf(card)).append(") ").append(card.getName());
+            }
+
+            System.out.println("Votre main est composée de : " + txt);
             String sc = null;
             System.out.println("Veuillez choisir le numéro associé à la carte présente dans votre main : ");
             sc = Main.getScanner().nextLine();
@@ -73,35 +74,31 @@ public class Player {
             System.out.println(c.getName() + " : " + c.getDescription());
             System.out.println("Etes vous sûr de jouer cette carte ? O/n ");
             String test = null;
-            while (!(test == "1")){
+            sc = Main.getScanner().nextLine();
+            if (sc.equals("O") || sc.equals("o")) {
+                System.out.println("1 : Jouer cette carte pour les points");
+                System.out.println("2 : Jouer cette carte pour son pouvoir");
+                System.out.println("3 : Garder cette carte pour sa prochaine vie");
+                System.out.println("4 : Défausser cette carte");
+                sc = null;
                 sc = Main.getScanner().nextLine();
-                if (sc.equals("O")|| sc.equals("o")) {
-                    System.out.println("1 : Jouer cette carte pour les points");
-                    System.out.println("2 : Jouer cette carte pour son pouvoir");
-                    System.out.println("3 : Garder cette carte pour sa prochaine vie");
-                    System.out.println("4 : Défausser cette carte");
-                    sc = null;
-                    sc = Main.getScanner().nextLine();
-                    switch (sc) {
-                        case "1" -> c.playForPoints(this);
-                        case "2" -> c.activate();
-                        case "3" -> c.playFutureLife(this);
-                        case "4" -> {
-                            hand.remove(c);
-                            System.out.println("La carte " + c.getName() + " a été défaussée de votre main");
-                        }
+                switch (sc) {
+                    case "1" -> c.playForPoints(this);
+                    case "2" -> c.activate();
+                    case "3" -> c.playFutureLife(this);
+                    case "4" -> {
+                        hand.remove(c);
+                        System.out.println("La carte " + c.getName() + " a été défaussée de votre main");
                     }
-                    test ="1";
-                } else if (sc.equals("N") || sc.equals("n")){
-                    System.out.println("Veuillez choisir une autre carte");
-                    sc = null;
-                    playCard();
                 }
-                else if(!sc.equals("O")|| !sc.equals("o")||!sc.equals("N")||!sc.equals("n") ){
-                    System.out.println("Mauvaise entrée, veuillez recommencer svp");
-                    sc = null;
-                    playCard();
-                }
+            } else if (sc.equals("N") || sc.equals("n")) {
+                System.out.println("Veuillez choisir une autre carte");
+                sc = null;
+                c = null;
+            } else if (!sc.equals("O") || !sc.equals("o") || !sc.equals("N") || !sc.equals("n")) {
+                System.out.println("Mauvaise entrée, veuillez recommencer svp");
+                sc = null;
+                c = null;
             }
 
 
@@ -111,6 +108,7 @@ public class Player {
             // gestion des exceptions pour le scanner
         }
     }
+
     public void playTurn() {
         drawCard(); //Fait piocher une carte à l'utilisateur
         playCard(); //Fait jouer la carte de son choix à l'utilisateur
