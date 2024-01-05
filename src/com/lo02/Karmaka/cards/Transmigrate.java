@@ -1,6 +1,7 @@
 package com.lo02.Karmaka.cards;
 
 import com.lo02.Karmaka.enums.Color;
+import com.lo02.Karmaka.objects.Player;
 
 public class Transmigrate extends Card {
 
@@ -9,7 +10,7 @@ public class Transmigrate extends Card {
     }
 
     @Override
-    public void activate() {
+    public void activate(Player player) {
         System.out.println("Placez dans notre Main n'importe quelle carte de votre Vie Future.");
         //TODO
         //action of the card

@@ -59,13 +59,7 @@ public class Player {
         boolean pass = false;
         while (c == null || pass) {
             //TODO
-            // show what is in the active player's hand
-            StringBuilder txt = new StringBuilder();
-            for (Card card : hand) {
-                txt.append(" ").append(hand.indexOf(card)).append(") ").append(card.getName());
-            }
-
-            System.out.println("Votre main est composée de : " + txt);
+            showHand();
             String sc = null;
             System.out.println("Veuillez choisir le numéro associé à la carte présente dans votre main : ");
             sc = Main.getScanner().nextLine();
@@ -84,7 +78,7 @@ public class Player {
                 sc = Main.getScanner().nextLine();
                 switch (sc) {
                     case "1" -> c.playForPoints(this);
-                    case "2" -> c.activate();
+                    case "2" -> c.activate(this);
                     case "3" -> c.playFutureLife(this);
                     case "4" -> {
                         hand.remove(c);
@@ -114,7 +108,25 @@ public class Player {
         playCard(); //Fait jouer la carte de son choix à l'utilisateur
         // proposer sauvegarde
     }
+    public void showHand(){
+        // show what is in the active player's hand
+        StringBuilder txt = new StringBuilder();
+        for (Card card : hand) {
+            txt.append(" ").append(hand.indexOf(card)).append(") ").append(card.getName());
+        }
 
+        System.out.println("Votre main est composée de : " + txt);
+    }
+    public void pickCard(){
+        String sc = null;
+        Card c = null;
+        System.out.println("Veuillez choisir le numéro associé à la carte présente dans votre main : ");
+        sc = Main.getScanner().nextLine();
+        c = hand.get(Integer.parseInt(sc));
+        System.out.print("Voici la description de la carte: ");
+        System.out.println(c.getName() + " : " + c.getDescription());
+        System.out.println("Etes vous sûr de jouer cette carte ? O/n ");
+    }
     public void reborn() {
         int redPoints = 0;
         int bluePoints = 0;

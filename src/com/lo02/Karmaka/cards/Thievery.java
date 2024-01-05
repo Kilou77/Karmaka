@@ -1,5 +1,6 @@
 package com.lo02.Karmaka.cards;
 import com.lo02.Karmaka.enums.Color;
+import com.lo02.Karmaka.objects.Player;
 
 public class Thievery extends Card{
 
@@ -8,7 +9,7 @@ public class Thievery extends Card{
         }
 
         @Override
-        public void activate() {
+        public void activate(Player player) {
             System.out.println();
             //TODO
             //action of the card

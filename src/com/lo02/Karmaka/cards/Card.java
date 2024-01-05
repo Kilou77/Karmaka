@@ -16,7 +16,7 @@ public abstract class Card {
         this.description = description;
     }
 
-    public abstract void activate();
+    public abstract void activate(Player player);
 
     public void playForPoints(Player player) {
         if (player.getHand().contains(this)){

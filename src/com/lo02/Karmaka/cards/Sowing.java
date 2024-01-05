@@ -1,6 +1,7 @@
 package com.lo02.Karmaka.cards;
 
 import com.lo02.Karmaka.enums.Color;
+import com.lo02.Karmaka.objects.Player;
 
 public class Sowing extends Card {
 
@@ -9,7 +10,7 @@ public class Sowing extends Card {
     }
 
     @Override
-    public void activate() {
+    public void activate(Player player) {
         //TODO
         //action of the card
     }
