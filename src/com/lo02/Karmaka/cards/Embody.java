@@ -11,7 +11,10 @@ public class Embody extends Card {
 
     @Override
     public void activate(Player player) {
-        //TODO
         //action of the card
+        //show active player's deeds
+        player.showDeeds();
+        //TODO
+        //copie the power of the card
     }
 }

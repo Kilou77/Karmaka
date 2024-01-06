@@ -17,8 +17,10 @@ public class CardManager {
     }
 
     public void initCardList() {
-        cardList.put(AnotherDay.class,2);
-        cardList.put(Denial.class,12);
+        /*cardList.put(AnotherDay.class,2);
+        cardList.put(Embody.class,1);
+        cardList.put(Denial.class,1);*/
+        cardList.put(Jubilee.class,12);
         /*cardList.put(Dwindle.class, 3);
         cardList.put(Peek.class, 3);
         cardList.put(StolenDreams.class, 3);

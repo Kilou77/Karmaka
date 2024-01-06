@@ -120,6 +120,24 @@ public class Player {
         }
         System.out.println("Votre main est composée de : " + txt);
     }
+    public void showDeeds(){
+        // show what is in the active player's deeds
+        StringBuilder txt = new StringBuilder();
+        for (Card card : deeds.getCards()) {
+            txt.append(" ").append(deeds.getCards().indexOf(card)).append(") ").append(card.getName());
+        }
+        System.out.println("Vous disposez des oeuvres suivantes : " + txt);
+    }
+
+    public void showFuturLife(){
+        // show what is in the active player's deeds
+        StringBuilder txt = new StringBuilder();
+        for (Card card : futureLife.getCards()) {
+            txt.append(" ").append(futureLife.getCards().indexOf(card)).append(") ").append(card.getName());
+        }
+        System.out.println("Vous disposez des oeuvres suivantes : " + txt);
+    }
+
     public void pickCard(){
         String sc = null;
         Card c = null;
@@ -130,7 +148,7 @@ public class Player {
             c = hand.get(Integer.parseInt(sc));
             System.out.print("Voici la description de la carte: ");
             System.out.println(c.getName() + " : " + c.getDescription());
-            System.out.println("Etes vous sûr de jouer cette carte ? O/n ");
+            System.out.println("Etes vous sûr d'utiliser cette carte ? O/n ");
             sc = Main.getScanner().nextLine();
             if (sc.equals("O") || sc.equals("o")) {
                 System.out.println("Condition respectée");

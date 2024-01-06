@@ -13,5 +13,7 @@ public class Mimic extends Card {
     public void activate(Player player) {
         //TODO
         //action of the card
+        // avoir accès aux données de l'autre joueur (via sauvegarde) ?
+
     }
 }

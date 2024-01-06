@@ -11,10 +11,12 @@ public class Destiny extends Card {
 
     @Override
     public void activate(Player player) {
-        //TODO
         //action of the card
         if (player.getHand().contains(this)){
             player.getHand().remove(this);
+            //TODO
+            // show 3 first cards of the well
+            // add up to 2 in your hand
             player.drawWell();
             this.playFutureLife(player);
         }

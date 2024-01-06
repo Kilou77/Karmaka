@@ -10,7 +10,6 @@ public class Denial extends Card {
 
     @Override
     public void activate(Player player) {
-        //TODO
         //action of the card
         if (player.getHand().contains(this)){
             player.getHand().remove(this);

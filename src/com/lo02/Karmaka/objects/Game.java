@@ -53,6 +53,10 @@ public class Game {
 
     }
 
+    public Player getActivePlayer() {
+        return activePlayer;
+    }
+
     public static Stack getWell() {
         return well;
     }
