@@ -17,8 +17,8 @@ public class CardManager {
     }
 
     public void initCardList() {
-        cardList.put(AnotherDay.class,8);
-        cardList.put(Denial.class,3);
+        cardList.put(AnotherDay.class,2);
+        cardList.put(Denial.class,12);
         /*cardList.put(Dwindle.class, 3);
         cardList.put(Peek.class, 3);
         cardList.put(StolenDreams.class, 3);
