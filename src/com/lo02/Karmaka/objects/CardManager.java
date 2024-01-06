@@ -25,7 +25,6 @@ public class CardManager {
         cardList.put(Thievery.class, 2);
          */
     }
-
     public void generateWell() {
         for (Class<? extends Card> c : cardList.keySet()) {
             for (int i = 0; i < cardList.get(c); i++) {

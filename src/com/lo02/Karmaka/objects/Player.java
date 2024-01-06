@@ -135,6 +135,7 @@ public class Player {
             if (sc.equals("O") || sc.equals("o")) {
                 System.out.println("Condition respectée");
             }
+
             else if (sc.equals("N") || sc.equals("n")) {
                 System.out.println("Veuillez choisir une autre carte");
                 sc = null;
