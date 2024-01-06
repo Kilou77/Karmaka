@@ -18,6 +18,7 @@ public class Denial extends Card {
             player.showHand();
             player.pickCard();
             System.out.println("Le pouvoir de cette carte sera appliqué");
+            //TODO
         }
 
     }

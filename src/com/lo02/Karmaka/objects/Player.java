@@ -5,9 +5,12 @@ import com.lo02.Karmaka.cards.Card;
 import com.lo02.Karmaka.cards.Stack;
 import com.lo02.Karmaka.enums.Color;
 import com.lo02.Karmaka.enums.KarmicScale;
+import com.lo02.Karmaka.objects.Game;
 
 import java.util.List;
 import java.util.ArrayList;
+
+import static com.lo02.Karmaka.cards.Stack.*;
 
 public class Player {
     private final Stack futureLife;
@@ -39,11 +42,10 @@ public class Player {
     }
 
     public void drawCard() {
-        System.out.println("C'est votre tour " + name + " !");
         if (!deck.getCards().isEmpty()) {
             Card c = deck.takeCard();
             hand.add(c);
-            System.out.println("Vous avez pioché la carte : " + c.getName() + " dans la Source. Elle sera placée en dernière position dans votre main.");
+            System.out.println("Vous avez pioché la carte : " + c.getName() + " dans votre pile. Elle sera placée en dernière position dans votre main.");
         } else {
             if (hand.isEmpty()) {
                 reborn();
@@ -53,7 +55,11 @@ public class Player {
             }
         }
     }
-
+    public void drawWell(){
+        Card c = Game.getWell().takeCard();
+        hand.add(c);
+        System.out.println("Vous avez pioché la carte: "+ c.getName() + " dans la source");
+    }
     public void playCard() {
         Card c = null;
         boolean pass = false;
@@ -104,6 +110,7 @@ public class Player {
     }
 
     public void playTurn() {
+        System.out.println("C'est votre tour " + name + " !");
         drawCard(); //Fait piocher une carte à l'utilisateur
         playCard(); //Fait jouer la carte de son choix à l'utilisateur
         // proposer sauvegarde
@@ -114,7 +121,6 @@ public class Player {
         for (Card card : hand) {
             txt.append(" ").append(hand.indexOf(card)).append(") ").append(card.getName());
         }
-
         System.out.println("Votre main est composée de : " + txt);
     }
     public void pickCard(){

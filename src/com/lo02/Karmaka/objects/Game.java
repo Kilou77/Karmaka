@@ -9,7 +9,7 @@ public class Game {
     private Player player1;
     private Player player2;
     private Player activePlayer;
-    private Stack well;
+    private static Stack well;
     private Stack ruins;
     private CardManager cardManager = new CardManager();
 
@@ -49,12 +49,11 @@ public class Game {
 
 
     }
-
     public void end() {
 
     }
 
-    public Stack getWell() {
+    public static Stack getWell() {
         return well;
     }
 }
