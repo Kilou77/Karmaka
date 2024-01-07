@@ -4,19 +4,19 @@ package com.lo02.Karmaka.objects;
 import com.lo02.Karmaka.Main;
 import com.lo02.Karmaka.cards.Card;
 import com.lo02.Karmaka.cards.Stack;
+import com.lo02.Karmaka.enums.StateGame;
 
 public class Game {
     private Player player1;
     private Player player2;
     private Player activePlayer;
+    private StateGame stateGame;
     private static Stack well;
     private Stack ruins;
     private CardManager cardManager = new CardManager();
-
-
-
     public void init() {
         // Initialisation de la partie
+        stateGame = StateGame.INIT;
         this.player1 = new Player();
         this.player2 = new Player();
         this.well = new Stack();
@@ -38,6 +38,7 @@ public class Game {
     }
 
     public void start() {
+        stateGame = StateGame.PLAYING;
         activePlayer = (Main.getRandom().nextInt(2) == 1) ? player1 : player2;
         while (true) {
             //TOUR
@@ -49,13 +50,34 @@ public class Game {
 
 
     }
-    public void end() {
-
-    }
 
     public Player getActivePlayer() {
         return activePlayer;
     }
+    public void end() {
+        stateGame = StateGame.END;
+    }
+
+    public StateGame getStateGame() {
+        return stateGame;
+    }
+
+    public Player getPlayer1() {
+        return player1;
+    }
+
+    public Player getPlayer2() {
+        return player2;
+    }
+
+    public CardManager getCardManager() {
+        return cardManager;
+    }
+
+    public Stack getRuins() {
+        return ruins;
+    }
+
 
     public static Stack getWell() {
         return well;

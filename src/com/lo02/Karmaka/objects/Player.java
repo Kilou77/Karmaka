@@ -209,4 +209,9 @@ public class Player {
         return futureLife;
     }
 
+    public Player getOtherPlayer() {
+        Game game = Main.getInstance().getGame();
+        return (game.getPlayer1() == this) ? game.getPlayer2() : game.getPlayer1();
+    }
+
 }
