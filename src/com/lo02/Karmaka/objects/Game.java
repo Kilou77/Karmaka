@@ -6,6 +6,8 @@ import com.lo02.Karmaka.cards.Card;
 import com.lo02.Karmaka.cards.Stack;
 import com.lo02.Karmaka.enums.StateGame;
 
+import java.io.*;
+
 public class Game {
     private Player player1;
     private Player player2;
@@ -52,6 +54,27 @@ public class Game {
         }
 
 
+    }
+
+    public void saveGame(String path) {
+        try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(path))) {
+            oos.writeObject(this);
+            System.out.println("Partie sauvegardée avec succès.");
+        } catch (IOException e) {
+            e.printStackTrace();
+            System.err.println("Erreur lors de la sauvegarde de la partie.");
+        }
+    }
+    public static Game loadGame(String path) {
+        try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(path))) {
+            Game partie = (Game) ois.readObject();
+            System.out.println("Partie chargée avec succès.");
+            return partie;
+        } catch (IOException | ClassNotFoundException e) {
+            e.printStackTrace();
+            System.err.println("Erreur lors du chargement de la partie.");
+            return null;
+        }
     }
 
     public Player getActivePlayer() {

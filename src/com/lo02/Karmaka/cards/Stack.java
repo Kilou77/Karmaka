@@ -33,6 +33,9 @@ public class Stack {
     }
 
     public Card pickCard() {
+        //TODO
+        // you can only pick a card in your hand
+        // no sc exceptions conditions
         String sc = null;
         Card c = null;
         boolean pass = false;
