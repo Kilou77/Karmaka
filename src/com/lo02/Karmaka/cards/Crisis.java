@@ -13,6 +13,8 @@ public class Crisis extends Card {
 
     @Override
     public void activate(Player player) {
+        System.out.println("C'est à l'autre joueur de choisir une carte de sa main afin de la défausser");
         Main.getInstance().getGame().getRuins().addCard(player.getOtherPlayer().playerPick());
+        System.out.println("La carte a bien été supprimé de votre jeu");
     }
 }

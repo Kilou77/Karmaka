@@ -44,10 +44,12 @@ public class Main {
                         break;
                     case 2:
                         load();
+                        getInstance().getGame().setStateGame(StateGame.PLAYING);
                         pass = true;
                         break;
                     case 3:
                         System.out.println("Vous avez quitté !");
+                        getInstance().getGame().setStateGame(StateGame.END);
                         pass = true;
                         break;
                     default:

@@ -27,7 +27,7 @@ public class Game {
         while (!pass) {
             System.out.println("Veuillez choisir les joueurs ");
             System.out.println("1 : 2 Joueurs réels");
-            System.out.println("2 : 1 Joueurs réel et un Joueur virtuel");
+            System.out.println("2 : 1 Joueur réel et un Joueur virtuel");
             //System.out.println("3 : 2 Joueurs virtuels");
             sc = Main.getInstance().getScanner().nextLine();
             int choice = Integer.parseInt(sc);
@@ -145,6 +145,10 @@ public class Game {
 
     public void end() {
         stateGame = StateGame.END;
+    }
+
+    public void setStateGame(StateGame stateGame) {
+        this.stateGame = stateGame;
     }
 
     public StateGame getStateGame() {

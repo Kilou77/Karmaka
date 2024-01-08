@@ -160,7 +160,7 @@ public class Player {
                     System.out.print("Voici la description de la carte : ");
                     System.out.println(c.getName() + " : " + c.getDescription());
 
-                    System.out.println("Etes-vous sûr de jouer cette carte ? O/n ");
+                    System.out.println("Etes-vous sûr d'utiliser cette carte ? O/n ");
                     sc = Main.getInstance().getScanner().nextLine();
 
                     if (sc.equalsIgnoreCase("O")) {

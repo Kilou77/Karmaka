@@ -13,9 +13,14 @@ public class Denial extends Card {
     public void activate(Player player) {
         //action of the card
         System.out.println("Choisissez une carte à défausser");
-        player.showHand();
-        player.getHand().get(Main.getInstance().getRandom().nextInt(player.getHand().size())).activate(player);
-        System.out.println("Le pouvoir de cette carte sera appliqué");
+        Card c = null;
+        c = player.playerPick();
+        // copy of power of the card c
+        System.out.println("Le pouvoir de la carte " + c.getName()  + " sera appliqué");
+        player.getHand().remove(c);
+        c.activate(player);
+
+
     }
 }
 
