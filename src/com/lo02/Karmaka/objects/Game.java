@@ -58,7 +58,6 @@ public class Game {
                                     }
                                     case "2" -> {
                                         this.player2 = new VirtualPlayer(Strategy.DEFENSIVE);
-
                                         pass1 = true;
                                     }
                                     case "3" -> {
@@ -68,7 +67,7 @@ public class Game {
                                 }
                             } else {
                                 System.out.println("Choix invalide.Veuillez choisir une autre configuration");
-                                pass = false;
+                                pass1 = false;
                             }
                         }
                         pass = true;
