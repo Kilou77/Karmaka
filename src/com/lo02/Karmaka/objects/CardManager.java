@@ -17,9 +17,9 @@ public class CardManager {
     }
 
     public void initCardList() {
-        /*cardList.put(AnotherDay.class,3);*/
+        /*cardList.put(AnotherDay.class,3);
         cardList.put(Crisis.class,30);
-        /*cardList.put(Denial.class,2);
+        cardList.put(Denial.class,2);
         cardList.put(Destiny.class,2);
         cardList.put(Dwindle.class,2);
         cardList.put(Embody.class,2);
@@ -34,13 +34,12 @@ public class CardManager {
         cardList.put(Salvage.class,2);
         cardList.put(Sowing.class,2);
         cardList.put(Spite.class,2);
-        cardList.put(StolenDreams.class,2);
-        cardList.put(Swindle.class,2);
-        cardList.put(Thievery.class,2);
-        cardList.put(Transmigrate.class,2);
-        cardList.put(Vengeance.class,2);
-        cardList.put(Voyage.class,2);
-         */
+        cardList.put(StolenDreams.class,36);
+        cardList.put(Swindle.class,36);*/
+        cardList.put(Thievery.class,36);
+        /*cardList.put(Transmigrate.class,36);
+        cardList.put(Vengeance.class,36);
+        cardList.put(Voyage.class,36);*/
     }
     public void generateWell() {
         for (Class<? extends Card> c : cardList.keySet()) {

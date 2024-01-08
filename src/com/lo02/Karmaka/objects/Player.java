@@ -13,6 +13,11 @@ public class Player {
     private final Stack deeds;
     private final List<Card> hand;
     private final Stack deck;
+
+    public String getName() {
+        return name;
+    }
+
     private String name;
     private int karmicRing;
     private KarmicScale karmicScale;
@@ -122,6 +127,14 @@ public class Player {
         System.out.println("Votre main est composée de : " + txt);
     }
 
+    public void showRivalHand(int n) {
+        StringBuilder txt = new StringBuilder();
+        for (int i = 0; i <= n; i++) {
+            txt.append(" ").append(i).append(") ").append(this.getOtherPlayer().getHand().get(i).getName());
+        }
+        System.out.println("Les" + n + "premières cartes de la main adverse sont : " + txt);
+    }
+
     public void showDeeds() {
         // show what is in the active player's deeds
         StringBuilder txt = new StringBuilder();
@@ -131,13 +144,19 @@ public class Player {
         System.out.println("Vous disposez des oeuvres suivantes : " + txt);
     }
 
+    public void showRivalExposedDeed() {
+        StringBuilder txt = new StringBuilder();
+        txt.append(" ").append(this.getOtherPlayer().getDeeds().getCards().getFirst()).append(") ").append(this.getOtherPlayer().getDeeds().getCards().getFirst().getName());
+        System.out.println("L'oeuvre exposée de votre rival est : "+ txt);
+    }
+
     public void showFutureLife(){
         // show what is in the active player's deeds
         StringBuilder txt = new StringBuilder();
         for (Card card : futureLife.getCards()) {
             txt.append(" ").append(futureLife.getCards().indexOf(card)).append(") ").append(card.getName());
         }
-        System.out.println("Vous disposez des oeuvres suivantes : " + txt);
+        System.out.println("Vous disposez des cartes suivantes dans votre vie future : " + txt);
     }
 
     public Card playerPick(){

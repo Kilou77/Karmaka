@@ -14,5 +14,6 @@ public class Vengeance extends Card {
     @Override
     public void activate(Player player) {
         Main.getInstance().getGame().getRuins().addCard(player.getOtherPlayer().getDeeds().getCards().getFirst());
+        System.out.println("Vous avez défaussé l'oeuvre exposée de " + player.getOtherPlayer().getName());
     }
 }

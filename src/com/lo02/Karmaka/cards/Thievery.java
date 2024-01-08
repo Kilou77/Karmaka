@@ -11,6 +11,7 @@ public class Thievery extends Card{
         @Override
         public void activate(Player player) {
             player.getHand().add(player.getOtherPlayer().getDeeds().getCards().getFirst());
+            System.out.println("Vous avez volé l'oeuvre exposée de votre rival : " + player.getHand().getLast().getName());
         }
 
 }
