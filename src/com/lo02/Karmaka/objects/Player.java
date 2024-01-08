@@ -127,28 +127,32 @@ public class Player {
                         }
 
 
-                    } else if (sc.equalsIgnoreCase("N")) {
+                    } else if (sc.equalsIgnoreCase("n")) {
                         System.out.println("Veuillez choisir une autre carte");
                         c = null;
+                        playCard();
                     } else {
                         System.out.println("Mauvaise entrée, veuillez recommencer svp");
                         c = null;
+                        playCard();
                     }
                 } else {
                     System.out.println("Numéro de carte invalide. Veuillez choisir un numéro valide.");
                     c = null;
+                    playCard();
                 }
             } catch (NumberFormatException e) {
                 System.out.println("Veuillez entrer un numéro valide.");
                 sc = null;
+                c = null;
+                playCard();
             }
         }
     }
 
-
     public void playTurn() {
         System.out.println("C'est votre tour " + name + " !");
-        drawCard(); //Fait piocher une carte à l'utilisateur
+        drawCard(); //Fait piocher une carte à l'utilisateur depuis sa pile
         playCard(); //Fait jouer la carte de son choix à l'utilisateur
         // proposer sauvegarde
     }
@@ -171,7 +175,7 @@ public class Player {
         System.out.println("Vous disposez des oeuvres suivantes : " + txt);
     }
 
-    public void showFuturLife() {
+    public void showFuturLife(){
         // show what is in the active player's deeds
         StringBuilder txt = new StringBuilder();
         for (Card card : futureLife.getCards()) {
@@ -180,7 +184,7 @@ public class Player {
         System.out.println("Vous disposez des oeuvres suivantes : " + txt);
     }
 
-    public void pickCard() {
+    public Card playerPick(){
         String sc = null;
         Card c = null;
         boolean pass = false;
@@ -198,13 +202,15 @@ public class Player {
                 System.out.println("Veuillez choisir une autre carte");
                 sc = null;
                 c = null;
+                playerPick();
             } else if (!sc.equals("O") || !sc.equals("o") || !sc.equals("N") || !sc.equals("n")) {
                 System.out.println("Mauvaise entrée, veuillez recommencer svp");
                 sc = null;
                 c = null;
+                playerPick();
             }
         }
-
+        return c;
     }
 
     public void reborn() {

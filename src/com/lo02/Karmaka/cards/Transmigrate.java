@@ -14,6 +14,7 @@ public class Transmigrate extends Card {
         System.out.println("Placez dans notre Main n'importe quelle carte de votre Vie Future.");
         //TODO
         //action of the card
+        player.getHand().add(player.getFutureLife().pickCard());
     }
 }
 

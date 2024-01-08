@@ -14,7 +14,7 @@ public class Embody extends Card {
         //action of the card
         //show active player's deeds
         player.showDeeds();
-        //TODO
+
         //copie the power of the card
     }
 }

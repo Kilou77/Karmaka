@@ -1,6 +1,8 @@
 package com.lo02.Karmaka.cards;
 
+import com.lo02.Karmaka.Main;
 import com.lo02.Karmaka.enums.Color;
+import com.lo02.Karmaka.objects.Game;
 import com.lo02.Karmaka.objects.Player;
 
 public class Longevity extends Card {
@@ -11,7 +13,21 @@ public class Longevity extends Card {
 
     @Override
     public void activate(Player player) {
-        //TODO
-        //action of the card
+        System.out.println("Choisissez un joueur : 1 pour vous, 2 pour l'adversaire");
+        String sc = Main.getScanner().nextLine();
+        switch (sc) {
+            case "1" -> {
+                player.getDeck().addCard(Game.getWell().takeCard());
+                player.getDeck().addCard(Game.getWell().takeCard());
+            }
+            case "2" -> {
+                player.getOtherPlayer().getDeck().addCard(Game.getWell().takeCard());
+                player.getOtherPlayer().getDeck().addCard(Game.getWell().takeCard());
+            }
+            default -> {
+                System.out.println("Veuillez rentrer une saisie valide.");
+                activate(player);
+            }
+        }
     }
 }

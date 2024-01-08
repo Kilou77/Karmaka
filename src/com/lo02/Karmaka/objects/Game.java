@@ -12,7 +12,7 @@ public class Game {
     private Player activePlayer;
     private StateGame stateGame;
     private static Stack well;
-    private Stack ruins;
+    private static Stack ruins;
     private CardManager cardManager = new CardManager();
     public void init() {
         // Initialisation de la partie
@@ -76,7 +76,7 @@ public class Game {
         return cardManager;
     }
 
-    public Stack getRuins() {
+    public static Stack getRuins() {
         return ruins;
     }
 

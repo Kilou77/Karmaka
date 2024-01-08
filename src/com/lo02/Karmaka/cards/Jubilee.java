@@ -12,22 +12,20 @@ public class Jubilee extends Card {
 
     @Override
     public void activate(Player player) {
-        //TODO
-        //action of the card
         player.showHand();
         System.out.println("Combien de cartes voulez vous mettre sur vos Oeuvres ? (2 max)");
         Card c = null;
         int max = 2;
         String sc = null;
         sc = Main.getScanner().nextLine();
-        if (Integer.parseInt(sc) <= 2){
+        if (Integer.parseInt(sc) <= 2 && Integer.parseInt(sc) >0){
             for (int i = 1; i <= Integer.parseInt(sc); i++){
                 player.showHand();
-
-
+                player.getDeeds().addCard(player.playerPick());
             }
-        }else {
-            return;
+        }else if (!(Integer.parseInt(sc)==0) || !(Integer.parseInt(sc) <= 2)){
+            System.out.println("Entrée invalide. Veuillez recommencer.");
+            activate(player);
         }
 
 

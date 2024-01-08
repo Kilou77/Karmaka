@@ -11,9 +11,6 @@ public class Mimic extends Card {
 
     @Override
     public void activate(Player player) {
-        //TODO
-        //action of the card
-        // avoir accès aux données de l'autre joueur (via sauvegarde) ?
-
+        player.getOtherPlayer().getDeeds().getCards().getFirst().activate(player);
     }
 }

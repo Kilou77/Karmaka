@@ -11,7 +11,6 @@ public class Recycle extends Card {
 
     @Override
     public void activate(Player player) {
-        //TODO
-        //action of the card
+
     }
 }
