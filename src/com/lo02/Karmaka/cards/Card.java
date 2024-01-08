@@ -19,26 +19,22 @@ public abstract class Card {
     public abstract void activate(Player player);
 
     public void playForPoints(Player player) {
-        if (player.getHand().contains(this)){
-            player.getHand().remove(this);
-            player.getDeeds().addCard(this);
-            System.out.println("Vous avez disposé la carte: " + this.getName() + " dans vos oeuvres");
-        }
-
+        player.getHand().remove(this);
+        player.getDeeds().addCard(this);
+        System.out.println("Vous avez disposé la carte: " + this.getName() + " dans vos oeuvres");
     }
 
     public void playFutureLife(Player player) {
-        if (player.getHand().contains(this)){
-            player.getHand().remove(this);
-            player.getFutureLife().addCard(this);
-            System.out.println("Vous avez ajouté la carte: " + this.getName() + " à votre vie future");
-        }
+        player.getHand().remove(this);
+        player.getFutureLife().addCard(this);
+        System.out.println("Vous avez ajouté la carte: " + this.getName() + " à votre vie future");
     }
 
     public String getName() {
         return name;
     }
-    public String getDescription(){
+
+    public String getDescription() {
         return description;
     }
 

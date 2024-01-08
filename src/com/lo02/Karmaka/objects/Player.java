@@ -89,7 +89,8 @@ public class Player {
                     }
                     case "4" -> {
                         hand.remove(c);
-                        System.out.println("La carte " + c.getName() + " a été défaussée de votre main");
+                        Main.getInstance().getGame().getRuins().addCard(c);
+                        System.out.println("Vous avez défaussé la carte" + c.getName());
                         pass1 = true;
                     }
                     default -> {
