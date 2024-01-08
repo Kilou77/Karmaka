@@ -47,7 +47,6 @@ public class VirtualPlayer extends Player {
                         Main.getInstance().getGame().getRuins().addCard(cardToPlay);
                         System.out.println("Vous avez défaussé la carte" + cardToPlay.getName());
                     }
-
                 }
             }
         }
