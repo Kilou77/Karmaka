@@ -91,7 +91,7 @@ public class Game {
             System.out.println("NON");
             return;
         }
-        for (int i = 0; i < 4; i++) {
+        for (int i = 0; i < 3; i++) {
             player1.getHand().add(well.takeCard());
             player2.getHand().add(well.takeCard());
         }
