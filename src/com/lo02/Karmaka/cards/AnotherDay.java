@@ -10,12 +10,9 @@ public class AnotherDay extends Card {
 
     @Override
     public void activate(Player player) {
-        if (player.getHand().contains(this)){
-            player.getHand().remove(this);
-            player.drawWell();
-            System.out.println("Vous pouvez rejouer une carte de votre choix");
-            player.playCard();
-        }
-
+        player.getHand().remove(this);
+        player.drawWell();
+        System.out.println("Vous pouvez rejouer une carte de votre choix");
+        player.playCard();
     }
 }

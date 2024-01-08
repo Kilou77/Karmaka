@@ -10,12 +10,7 @@ public class Thievery extends Card{
 
         @Override
         public void activate(Player player) {
-            System.out.println();
-            //TODO
-            //action of the card
-
-
-
-}
+            player.getHand().add(player.getOtherPlayer().getDeeds().getCards().getFirst());
+        }
 
 }

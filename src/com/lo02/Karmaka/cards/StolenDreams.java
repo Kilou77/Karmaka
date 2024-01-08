@@ -11,8 +11,7 @@ public class StolenDreams extends Card {
 
     @Override
     public void activate(Player player) {
-        //TODO
-        //action of the card
+        player.getFutureLife().getCards().add(player.getOtherPlayer().getFutureLife().getCards().getFirst());
     }
 }
 

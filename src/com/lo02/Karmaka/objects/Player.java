@@ -3,14 +3,10 @@ package com.lo02.Karmaka.objects;
 import com.lo02.Karmaka.Main;
 import com.lo02.Karmaka.cards.Card;
 import com.lo02.Karmaka.cards.Stack;
-import com.lo02.Karmaka.enums.Color;
 import com.lo02.Karmaka.enums.KarmicScale;
-import com.lo02.Karmaka.objects.Game;
 
 import java.util.List;
 import java.util.ArrayList;
-
-import static com.lo02.Karmaka.cards.Stack.*;
 
 public class Player {
     private final Stack futureLife;
@@ -175,7 +171,7 @@ public class Player {
         System.out.println("Vous disposez des oeuvres suivantes : " + txt);
     }
 
-    public void showFuturLife(){
+    public void showFutureLife(){
         // show what is in the active player's deeds
         StringBuilder txt = new StringBuilder();
         for (Card card : futureLife.getCards()) {
