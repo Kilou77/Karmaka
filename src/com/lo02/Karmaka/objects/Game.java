@@ -64,6 +64,7 @@ public class Game {
                                         this.player2 = new VirtualPlayer(Strategy.RANDOM);
                                         pass1 = true;
                                     }
+                                    default -> System.out.println("Choix invalide.Veuillez choisir une autre configuration");
                                 }
                             } else {
                                 System.out.println("Choix invalide.Veuillez choisir une autre configuration");

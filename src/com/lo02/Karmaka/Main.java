@@ -1,8 +1,10 @@
 package com.lo02.Karmaka;
 
+import com.lo02.Karmaka.enums.StateGame;
 import com.lo02.Karmaka.objects.Game;
 
 import java.nio.file.Paths;
+import java.util.InputMismatchException;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -27,7 +29,46 @@ public class Main {
     }
 
     public static void main(String[] args) {
-        getInstance().getGame().init();
+        loadingPage();
+        boolean pass = false;
+        while (!pass) {
+            try{
+                String sc = null;
+                int choice = -1;
+                sc = Main.getInstance().scanner.nextLine();
+                choice = Integer.parseInt(sc);
+                switch (choice) {
+                    case 1:
+                        getInstance().getGame().init();
+                        pass = true;
+                        break;
+                    case 2:
+                        load();
+                        pass = true;
+                        break;
+                    case 3:
+                        System.out.println("Vous avez quitté !");
+                        pass = true;
+                        break;
+                    default:
+                        System.out.println("Choix invalide. Veuillez choisir une option valide.");
+                }
+            }catch (NumberFormatException e) {
+                System.out.println("Veuillez entrer un numéro valide.");
+                pass = false;
+            }
+
+        }
+    }
+
+    private static void loadingPage() {
+        System.out.println("****************************************************************************************");
+        System.out.println("Bienvenue dans Karmaka !");
+        System.out.println("Menu :");
+        System.out.println("1 - Jouer");
+        System.out.println("2 - Reprendre une partie");
+        System.out.println("3 - Quitter");
+        System.out.print("Choisissez une option : ");
     }
 
     public void save() {
@@ -36,7 +77,7 @@ public class Main {
         System.out.println("Partie sauvegardée.");
     }
 
-    public void load() {
+    public static void load() {
         String Path = Paths.get("game.ser").toAbsolutePath().toString();
         Game partieChargee = Game.loadGame(Path);
         if (partieChargee != null) {
