@@ -64,90 +64,48 @@ public class Player {
 
     public void playCard() {
         Card c = null;
-        boolean pass = false;
+        c = playerPick();
+        boolean pass1 = false;
+        String sc = null;
 
-        while (c == null || pass) {
-            showHand();
-            String sc = null;
-
-            try {
-                System.out.println("Veuillez choisir le numéro associé à la carte présente dans votre main : ");
-                sc = Main.getScanner().nextLine();
-                int cardNumber = Integer.parseInt(sc);
-
-                // Verification of the card
-                if (cardNumber >= 0 && cardNumber < hand.size()) {
-                    c = hand.get(cardNumber);
-
-                    //Description of the card
-                    System.out.print("Voici la description de la carte : ");
-                    System.out.println(c.getName() + " : " + c.getDescription());
-
-                    System.out.println("Etes-vous sûr de jouer cette carte ? O/n ");
-                    sc = Main.getScanner().nextLine();
-
-                    if (sc.equalsIgnoreCase("O")) {
-                        boolean pass1 = false;
-
-                        while(!pass1){
-                            System.out.println("Veuillez choisir une action : ");
-                            System.out.println("1 : Jouer cette carte pour les points");
-                            System.out.println("2 : Jouer cette carte pour son pouvoir");
-                            System.out.println("3 : Garder cette carte pour sa prochaine vie");
-                            System.out.println("4 : Défausser cette carte");
-                            sc = Main.getScanner().nextLine();
-
-                            if (cardNumber >= 1 && cardNumber <= 4) {
-                                switch (sc) {
-                                    case "1" -> {
-                                        c.playForPoints(this);
-                                        pass1 = true;
-                                    }
-                                    case "2" -> {
-                                        c.activate(this);
-                                        pass1 = true;
-                                    }
-                                    case "3" -> {
-                                        c.playFutureLife(this);
-                                        pass1 = true;
-                                    }
-                                    case "4" -> {
-                                        hand.remove(c);
-                                        System.out.println("La carte " + c.getName() + " a été défaussée de votre main");
-                                        pass1 = true;
-                                    }
-                                    default -> {
-                                        System.out.println("Choix invalide. Veuillez choisir une action à réaliser");
-                                    }
-                                }
-                            } else {
-                                System.out.println("Choix invalide. La carte n'a pas été jouée. Veuillez choisir une action à réaliser");
-                                return;
-                            }
-                        }
-
-
-                    } else if (sc.equalsIgnoreCase("n")) {
-                        System.out.println("Veuillez choisir une autre carte");
-                        c = null;
-                        playCard();
-                    } else {
-                        System.out.println("Mauvaise entrée, veuillez recommencer svp");
-                        c = null;
-                        playCard();
+        while(!pass1){
+            System.out.println("Veuillez choisir une action : ");
+            System.out.println("1 : Jouer cette carte pour les points");
+            System.out.println("2 : Jouer cette carte pour son pouvoir");
+            System.out.println("3 : Garder cette carte pour sa prochaine vie");
+            System.out.println("4 : Défausser cette carte");
+            sc = Main.getScanner().nextLine();
+            int cardNumber = Integer.parseInt(sc);
+            if (cardNumber >= 1 && cardNumber <= 4) {
+                switch (sc) {
+                    case "1" -> {
+                        c.playForPoints(this);
+                        pass1 = true;
                     }
-                } else {
-                    System.out.println("Numéro de carte invalide. Veuillez choisir un numéro valide.");
-                    c = null;
-                    playCard();
+                    case "2" -> {
+                        c.activate(this);
+                        pass1 = true;
+                    }
+                    case "3" -> {
+                        c.playFutureLife(this);
+                        pass1 = true;
+                    }
+                    case "4" -> {
+                        hand.remove(c);
+                        System.out.println("La carte " + c.getName() + " a été défaussée de votre main");
+                        pass1 = true;
+                    }
+                    default -> {
+                        System.out.println("Choix invalide. Veuillez choisir une action à réaliser");
+                    }
                 }
-            } catch (NumberFormatException e) {
-                System.out.println("Veuillez entrer un numéro valide.");
-                sc = null;
-                c = null;
-                playCard();
+            } else {
+                System.out.println("Choix invalide. La carte n'a pas été jouée. Veuillez choisir une action à réaliser");
+                pass1 = false;
             }
         }
+
+
     }
 
     public void playTurn() {
@@ -185,31 +143,48 @@ public class Player {
     }
 
     public Card playerPick(){
-        String sc = null;
         Card c = null;
         boolean pass = false;
         while (c == null || pass) {
-            System.out.println("Veuillez choisir le numéro associé à la carte présente dans votre main : ");
-            sc = Main.getScanner().nextLine();
-            c = hand.get(Integer.parseInt(sc));
-            System.out.print("Voici la description de la carte: ");
-            System.out.println(c.getName() + " : " + c.getDescription());
-            System.out.println("Etes vous sûr d'utiliser cette carte ? O/n ");
-            sc = Main.getScanner().nextLine();
-            if (sc.equals("O") || sc.equals("o")) {
-                System.out.println("Condition respectée");
-            } else if (sc.equals("N") || sc.equals("n")) {
-                System.out.println("Veuillez choisir une autre carte");
+            showHand();
+            String sc = null;
+
+            try {
+                System.out.println("Veuillez choisir le numéro associé à la carte présente dans votre main : ");
+                sc = Main.getScanner().nextLine();
+                int cardNumber = Integer.parseInt(sc);
+
+                // Verification of the card
+                if (cardNumber >= 0 && cardNumber < hand.size()) {
+                    c = hand.get(cardNumber);
+
+                    //Description of the card
+                    System.out.print("Voici la description de la carte : ");
+                    System.out.println(c.getName() + " : " + c.getDescription());
+
+                    System.out.println("Etes-vous sûr de jouer cette carte ? O/n ");
+                    sc = Main.getScanner().nextLine();
+
+                    if (sc.equalsIgnoreCase("O")) {
+
+
+                    } else if (sc.equalsIgnoreCase("n")) {
+                        System.out.println("Veuillez choisir une autre carte");
+                        c = null;
+                    } else {
+                        System.out.println("Mauvaise entrée, veuillez recommencer svp");
+                        c = null;
+                    }
+                } else {
+                    System.out.println("Numéro de carte invalide. Veuillez choisir un numéro valide.");
+                    c = null;
+                }
+            } catch (NumberFormatException e) {
+                System.out.println("Veuillez entrer un numéro valide.");
                 sc = null;
-                c = null;
-                playerPick();
-            } else if (!sc.equals("O") || !sc.equals("o") || !sc.equals("N") || !sc.equals("n")) {
-                System.out.println("Mauvaise entrée, veuillez recommencer svp");
-                sc = null;
-                c = null;
-                playerPick();
             }
         }
+
         return c;
     }
 
