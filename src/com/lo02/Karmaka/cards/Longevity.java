@@ -17,12 +17,12 @@ public class Longevity extends Card {
         String sc = Main.getScanner().nextLine();
         switch (sc) {
             case "1" -> {
-                player.getDeck().addCard(Game.getWell().takeCard());
-                player.getDeck().addCard(Game.getWell().takeCard());
+                player.getDeck().addCard(Main.getInstance().getGame().getWell().takeCard());
+                player.getDeck().addCard(Main.getInstance().getGame().getWell().takeCard());
             }
             case "2" -> {
-                player.getOtherPlayer().getDeck().addCard(Game.getWell().takeCard());
-                player.getOtherPlayer().getDeck().addCard(Game.getWell().takeCard());
+                player.getOtherPlayer().getDeck().addCard(Main.getInstance().getGame().getWell().takeCard());
+                player.getOtherPlayer().getDeck().addCard(Main.getInstance().getGame().getWell().takeCard());
             }
             default -> {
                 System.out.println("Veuillez rentrer une saisie valide.");

@@ -11,8 +11,9 @@ public class Peek extends Card {
 
     @Override
     public void activate(Player player) {
-        System.out.println("Regardez la Main d’un rival. Vous pouvez ensuite jouer une autre carte.");
+        System.out.println("Voici la main du rival.");
         player.getOtherPlayer().showHand();
+        System.out.println("Choisissez une de ces cartes.");
         player.playCard();
     }
 }

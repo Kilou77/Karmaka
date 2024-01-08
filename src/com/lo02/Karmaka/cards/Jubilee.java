@@ -18,16 +18,14 @@ public class Jubilee extends Card {
         int max = 2;
         String sc = null;
         sc = Main.getScanner().nextLine();
-        if (Integer.parseInt(sc) <= 2 && Integer.parseInt(sc) >0){
-            for (int i = 1; i <= Integer.parseInt(sc); i++){
+        if (Integer.parseInt(sc) <= 2 && Integer.parseInt(sc) > 0) {
+            for (int i = 1; i <= Integer.parseInt(sc); i++) {
                 player.showHand();
                 player.getDeeds().addCard(player.playerPick());
             }
-        }else if (!(Integer.parseInt(sc)==0) || !(Integer.parseInt(sc) <= 2)){
+        } else if (!(Integer.parseInt(sc) == 0) || !(Integer.parseInt(sc) <= 2)) {
             System.out.println("Entrée invalide. Veuillez recommencer.");
             activate(player);
         }
-
-
     }
 }

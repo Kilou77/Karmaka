@@ -53,7 +53,7 @@ public class Player {
     }
 
     public void drawWell() {
-        Card c = Game.getWell().takeCard();
+        Card c = Main.getInstance().getGame().getWell().takeCard();
         hand.add(c);
         System.out.println("Vous avez pioché la carte: " + c.getName() + " dans la source");
     }
@@ -79,6 +79,7 @@ public class Player {
                         pass1 = true;
                     }
                     case "2" -> {
+                        getHand().remove(c);
                         c.activate(this);
                         pass1 = true;
                     }

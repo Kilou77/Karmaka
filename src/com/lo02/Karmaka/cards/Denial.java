@@ -11,13 +11,10 @@ public class Denial extends Card {
     @Override
     public void activate(Player player) {
         //action of the card
-        if (player.getHand().contains(this)){
-            player.getHand().remove(this);
-            System.out.println("Choisissez une carte à défausser");
-            player.showHand();
-            player.playerPick().activate(player);
-            System.out.println("Le pouvoir de cette carte sera appliqué");
-        }
+        System.out.println("Choisissez une carte à défausser");
+        player.showHand();
+        player.playerPick().activate(player);
+        System.out.println("Le pouvoir de cette carte sera appliqué");
     }
 }
 

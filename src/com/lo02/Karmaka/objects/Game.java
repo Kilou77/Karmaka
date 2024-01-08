@@ -11,9 +11,10 @@ public class Game {
     private Player player2;
     private Player activePlayer;
     private StateGame stateGame;
-    private static Stack well;
-    private static Stack ruins;
+    private Stack well;
+    private Stack ruins;
     private CardManager cardManager = new CardManager();
+
     public void init() {
         // Initialisation de la partie
         stateGame = StateGame.INIT;
@@ -47,7 +48,7 @@ public class Game {
             System.out.println("****************************************************************************************");
             activePlayer.playTurn();
             //Fin du tour, changement de joueur
-            this.activePlayer = (activePlayer==player1) ? player2 : player1;
+            this.activePlayer = (activePlayer == player1) ? player2 : player1;
         }
 
 
@@ -56,6 +57,7 @@ public class Game {
     public Player getActivePlayer() {
         return activePlayer;
     }
+
     public void end() {
         stateGame = StateGame.END;
     }
@@ -76,12 +78,28 @@ public class Game {
         return cardManager;
     }
 
-    public static Stack getRuins() {
+    public Stack getRuins() {
         return ruins;
     }
 
 
-    public static Stack getWell() {
+    public Stack getWell() {
         return well;
+    }
+
+    public void showRuins(int n) {
+        StringBuilder txt = new StringBuilder();
+        for (int i = 0; i <= n; i++) {
+            txt.append(" ").append(i).append(") ").append(getRuins().getCards().get(i).getName());
+        }
+        System.out.println("Les" + n + "premières cartes de la ruine sont : " + txt);
+    }
+
+    public void showWell(int n) {
+        StringBuilder txt = new StringBuilder();
+        for (int i = 0; i <= n; i++) {
+            txt.append(" ").append(i).append(") ").append(getWell().getCards().get(i).getName());
+        }
+        System.out.println("Les" + n + "premières cartes de la source sont : " + txt);
     }
 }

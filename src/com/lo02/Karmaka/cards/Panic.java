@@ -16,8 +16,8 @@ public class Panic extends Card {
         System.out.println("Choisissez un joueur : 1 pour vous, 2 pour l'adversaire");
         String sc = Main.getScanner().nextLine();
         switch (sc) {
-            case "1" -> Game.getRuins().addCard(player.getDeck().getCards().getFirst());
-            case "2" -> Game.getRuins().addCard(player.getOtherPlayer().getDeck().getCards().getFirst());
+            case "1" -> Main.getInstance().getGame().getRuins().addCard(player.getDeck().getCards().getFirst());
+            case "2" -> Main.getInstance().getGame().getRuins().addCard(player.getOtherPlayer().getDeck().getCards().getFirst());
             default -> {
                 System.out.println("Veuillez rentrer une saisie valide.");
                 activate(player);
