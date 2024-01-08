@@ -38,7 +38,7 @@ public class Stack {
         boolean pass = false;
         while (c == null || pass) {
             System.out.println("Veuillez choisir le numéro associé à la carte présente dans votre main : ");
-            sc = Main.getScanner().nextLine();
+            sc = Main.getInstance().getScanner().nextLine();
             c = this.cards.get(Integer.parseInt(sc));
         }
         this.cards.remove(c);

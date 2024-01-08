@@ -9,10 +9,10 @@ import java.util.Scanner;
 // then press Enter. You can now see whitespace characters in your code.
 public class Main {
     private static Main instance;
-    private static final Scanner scanner = new Scanner(System.in);
+    private final Scanner scanner = new Scanner(System.in);
     private final Game game;
     private String name;
-    private static final Random random = new Random();
+    private final Random random = new Random();
 
     private Main() {
         this.game = new Game();
@@ -33,7 +33,7 @@ public class Main {
         getInstance().getGame().init();
     }
 
-    public static Scanner getScanner() {
+    public Scanner getScanner() {
         return scanner;
     }
 
@@ -41,7 +41,7 @@ public class Main {
         return game;
     }
 
-    public static Random getRandom() {
+    public Random getRandom() {
         return random;
     }
 }

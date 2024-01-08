@@ -31,7 +31,7 @@ public class Player {
         String sc = null;
         while (sc == null) {
             System.out.println("Veuillez entrer le nom du joueur => ");
-            sc = Main.getScanner().nextLine();
+            sc = Main.getInstance().getScanner().nextLine();
         }
         this.name = sc;
         sc = null;
@@ -70,7 +70,7 @@ public class Player {
             System.out.println("2 : Jouer cette carte pour son pouvoir");
             System.out.println("3 : Garder cette carte pour sa prochaine vie");
             System.out.println("4 : Défausser cette carte");
-            sc = Main.getScanner().nextLine();
+            sc = Main.getInstance().getScanner().nextLine();
             int cardNumber = Integer.parseInt(sc);
             if (cardNumber >= 1 && cardNumber <= 4) {
                 switch (sc) {
@@ -148,7 +148,7 @@ public class Player {
 
             try {
                 System.out.println("Veuillez choisir le numéro associé à la carte présente dans votre main : ");
-                sc = Main.getScanner().nextLine();
+                sc = Main.getInstance().getScanner().nextLine();
                 int cardNumber = Integer.parseInt(sc);
 
                 // Verification of the card
@@ -160,7 +160,7 @@ public class Player {
                     System.out.println(c.getName() + " : " + c.getDescription());
 
                     System.out.println("Etes-vous sûr de jouer cette carte ? O/n ");
-                    sc = Main.getScanner().nextLine();
+                    sc = Main.getInstance().getScanner().nextLine();
 
                     if (sc.equalsIgnoreCase("O")) {
 

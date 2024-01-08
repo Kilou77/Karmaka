@@ -16,7 +16,7 @@ public class Dwindle extends Card {
     @Override
     public void activate(Player player) {
         System.out.println("Choisissez un joueur : 1 pour vous, 2 pour l'adversaire");
-        String sc = Main.getScanner().nextLine();
+        String sc = Main.getInstance().getScanner().nextLine();
         switch (sc) {
             case "1" -> Main.getInstance().getGame().getRuins().addCard(player.playerPick());
             case "2" -> Main.getInstance().getGame().getRuins().addCard(player.getOtherPlayer().playerPick());

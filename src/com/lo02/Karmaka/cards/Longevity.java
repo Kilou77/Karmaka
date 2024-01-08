@@ -14,7 +14,7 @@ public class Longevity extends Card {
     @Override
     public void activate(Player player) {
         System.out.println("Choisissez un joueur : 1 pour vous, 2 pour l'adversaire");
-        String sc = Main.getScanner().nextLine();
+        String sc = Main.getInstance().getScanner().nextLine();
         switch (sc) {
             case "1" -> {
                 player.getDeck().addCard(Main.getInstance().getGame().getWell().takeCard());

@@ -42,7 +42,7 @@ public class Game {
     public void start() {
         stateGame = StateGame.PLAYING;
         System.out.println("************************* Début de la partie de Karmaka *************************");
-        activePlayer = (Main.getRandom().nextInt(2) == 1) ? player1 : player2;
+        activePlayer = (Main.getInstance().getRandom().nextInt(2) == 1) ? player1 : player2;
         while (true) {
             //TOUR
             System.out.println("****************************************************************************************");
