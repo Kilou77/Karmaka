@@ -55,56 +55,96 @@ public class Player {
             }
         }
     }
-    public void drawWell(){
+
+    public void drawWell() {
         Card c = Game.getWell().takeCard();
         hand.add(c);
-        System.out.println("Vous avez pioché la carte: "+ c.getName() + " dans la source");
+        System.out.println("Vous avez pioché la carte: " + c.getName() + " dans la source");
     }
+
     public void playCard() {
         Card c = null;
         boolean pass = false;
+
         while (c == null || pass) {
-            //TODO
             showHand();
             String sc = null;
-            System.out.println("Veuillez choisir le numéro associé à la carte présente dans votre main : ");
-            sc = Main.getScanner().nextLine();
-            c = hand.get(Integer.parseInt(sc));
-            System.out.print("Voici la description de la carte: ");
-            System.out.println(c.getName() + " : " + c.getDescription());
-            System.out.println("Etes vous sûr de jouer cette carte ? O/n ");
-            sc = Main.getScanner().nextLine();
-            if (sc.equals("O") || sc.equals("o")) {
-                System.out.println("1 : Jouer cette carte pour les points");
-                System.out.println("2 : Jouer cette carte pour son pouvoir");
-                System.out.println("3 : Garder cette carte pour sa prochaine vie");
-                System.out.println("4 : Défausser cette carte");
+
+            try {
+                System.out.println("Veuillez choisir le numéro associé à la carte présente dans votre main : ");
                 sc = Main.getScanner().nextLine();
-                switch (sc) {
-                    case "1" -> c.playForPoints(this);
-                    case "2" -> c.activate(this);
-                    case "3" -> c.playFutureLife(this);
-                    case "4" -> {
-                        hand.remove(c);
-                        System.out.println("La carte " + c.getName() + " a été défaussée de votre main");
+                int cardNumber = Integer.parseInt(sc);
+
+                // Verification of the card
+                if (cardNumber >= 0 && cardNumber < hand.size()) {
+                    c = hand.get(cardNumber);
+
+                    //Description of the card
+                    System.out.print("Voici la description de la carte : ");
+                    System.out.println(c.getName() + " : " + c.getDescription());
+
+                    System.out.println("Etes-vous sûr de jouer cette carte ? O/n ");
+                    sc = Main.getScanner().nextLine();
+
+                    if (sc.equalsIgnoreCase("O")) {
+                        boolean pass1 = false;
+
+                        while(!pass1){
+                            System.out.println("Veuillez choisir une action : ");
+                            System.out.println("1 : Jouer cette carte pour les points");
+                            System.out.println("2 : Jouer cette carte pour son pouvoir");
+                            System.out.println("3 : Garder cette carte pour sa prochaine vie");
+                            System.out.println("4 : Défausser cette carte");
+                            sc = Main.getScanner().nextLine();
+
+                            if (cardNumber >= 1 && cardNumber <= 4) {
+                                switch (sc) {
+                                    case "1" -> {
+                                        c.playForPoints(this);
+                                        pass1 = true;
+                                    }
+                                    case "2" -> {
+                                        c.activate(this);
+                                        pass1 = true;
+                                    }
+                                    case "3" -> {
+                                        c.playFutureLife(this);
+                                        pass1 = true;
+                                    }
+                                    case "4" -> {
+                                        hand.remove(c);
+                                        System.out.println("La carte " + c.getName() + " a été défaussée de votre main");
+                                        pass1 = true;
+                                    }
+                                    default -> {
+                                        System.out.println("Choix invalide. Veuillez choisir une action à réaliser");
+                                    }
+                                }
+                            } else {
+                                System.out.println("Choix invalide. La carte n'a pas été jouée. Veuillez choisir une action à réaliser");
+                                return;
+                            }
+                        }
+
+
+                    } else if (sc.equalsIgnoreCase("N")) {
+                        System.out.println("Veuillez choisir une autre carte");
+                        c = null;
+                    } else {
+                        System.out.println("Mauvaise entrée, veuillez recommencer svp");
+                        c = null;
                     }
+                } else {
+                    System.out.println("Numéro de carte invalide. Veuillez choisir un numéro valide.");
+                    c = null;
                 }
-            }
-            else if (sc.equals("N") || sc.equals("n")) {
-                System.out.println("Veuillez choisir une autre carte");
+            } catch (NumberFormatException e) {
+                System.out.println("Veuillez entrer un numéro valide.");
                 sc = null;
-                c = null;
-            } else if (!sc.equals("O") || !sc.equals("o") || !sc.equals("N") || !sc.equals("n")) {
-                System.out.println("Mauvaise entrée, veuillez recommencer svp");
-                sc = null;
-                c = null;
             }
-            //Faire choisir une carte à l'utilisateur
-            //Donner la description
-            //Lui demander confirmation de l'utilisation ou remettre c à null
-            // gestion des exceptions pour le scanner
         }
     }
+
 
     public void playTurn() {
         System.out.println("C'est votre tour " + name + " !");
@@ -112,7 +152,8 @@ public class Player {
         playCard(); //Fait jouer la carte de son choix à l'utilisateur
         // proposer sauvegarde
     }
-    public void showHand(){
+
+    public void showHand() {
         // show what is in the active player's hand
         StringBuilder txt = new StringBuilder();
         for (Card card : hand) {
@@ -120,7 +161,8 @@ public class Player {
         }
         System.out.println("Votre main est composée de : " + txt);
     }
-    public void showDeeds(){
+
+    public void showDeeds() {
         // show what is in the active player's deeds
         StringBuilder txt = new StringBuilder();
         for (Card card : deeds.getCards()) {
@@ -129,7 +171,7 @@ public class Player {
         System.out.println("Vous disposez des oeuvres suivantes : " + txt);
     }
 
-    public void showFuturLife(){
+    public void showFuturLife() {
         // show what is in the active player's deeds
         StringBuilder txt = new StringBuilder();
         for (Card card : futureLife.getCards()) {
@@ -138,7 +180,7 @@ public class Player {
         System.out.println("Vous disposez des oeuvres suivantes : " + txt);
     }
 
-    public void pickCard(){
+    public void pickCard() {
         String sc = null;
         Card c = null;
         boolean pass = false;
@@ -152,9 +194,7 @@ public class Player {
             sc = Main.getScanner().nextLine();
             if (sc.equals("O") || sc.equals("o")) {
                 System.out.println("Condition respectée");
-            }
-
-            else if (sc.equals("N") || sc.equals("n")) {
+            } else if (sc.equals("N") || sc.equals("n")) {
                 System.out.println("Veuillez choisir une autre carte");
                 sc = null;
                 c = null;
@@ -166,6 +206,7 @@ public class Player {
         }
 
     }
+
     public void reborn() {
         int redPoints = 0;
         int bluePoints = 0;

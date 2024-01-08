@@ -17,6 +17,7 @@ public class Game {
     public void init() {
         // Initialisation de la partie
         stateGame = StateGame.INIT;
+        System.out.println("************************* Initialisation de la partie *************************");
         this.player1 = new Player();
         this.player2 = new Player();
         this.well = new Stack();
@@ -39,6 +40,7 @@ public class Game {
 
     public void start() {
         stateGame = StateGame.PLAYING;
+        System.out.println("************************* Début de la partie de Karmaka *************************");
         activePlayer = (Main.getRandom().nextInt(2) == 1) ? player1 : player2;
         while (true) {
             //TOUR
