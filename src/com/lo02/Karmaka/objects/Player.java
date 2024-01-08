@@ -20,11 +20,11 @@ public class Player {
     public Player() {
         askName();
         this.karmicScale = KarmicScale.DUNG_BEETLE;
-        this.futureLife = new Stack();
-        this.deeds = new Stack();
+        this.futureLife = new Stack("Vie Future");
+        this.deeds = new Stack("Oeuvre(s) exposée(s)");
         this.hand = new ArrayList<>();
         this.karmicRing = 0;
-        this.deck = new Stack();
+        this.deck = new Stack("Deck");
     }
 
     public void askName() {
@@ -63,7 +63,7 @@ public class Player {
         c = playerPick();
         boolean pass1 = false;
         String sc = null;
-
+        getFutureLife().showStack();
         while(!pass1){
             System.out.println("Veuillez choisir une action : ");
             System.out.println("1 : Jouer cette carte pour les points");

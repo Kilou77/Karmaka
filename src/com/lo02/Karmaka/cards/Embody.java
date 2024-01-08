@@ -12,7 +12,6 @@ public class Embody extends Card {
 
     @Override
     public void activate(Player player) {
-        player.showDeeds();
-        player.getHand().get(Main.getInstance().getRandom().nextInt(player.getHand().size())).activate(player);
+        player.getDeeds().showStack();
     }
 }

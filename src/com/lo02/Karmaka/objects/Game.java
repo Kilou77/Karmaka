@@ -84,8 +84,8 @@ public class Game {
                 pass = false;
             }
         }
-        this.well = new Stack();
-        this.ruins = new Stack();
+        this.well = new Stack("Source");
+        this.ruins = new Stack("Défausse");
         this.cardManager.init();
         if (well.getCards().size() < 12) {
             System.out.println("NON");

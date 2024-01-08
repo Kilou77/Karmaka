@@ -11,7 +11,7 @@ public class Transmigrate extends Card {
 
     @Override
     public void activate(Player player) {
-        player.showFutureLife();
+        player.getFutureLife().showStack();
         player.getHand().add(player.getFutureLife().pickCard());
     }
 }
