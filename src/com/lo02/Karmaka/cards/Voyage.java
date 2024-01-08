@@ -11,7 +11,9 @@ public class Voyage extends Card {
 
     @Override
     public void activate(Player player) {
-        //TODO
-        //action of the card
+        player.drawWell();
+        player.drawWell();
+        player.drawWell();
+        player.playCard();
     }
 }

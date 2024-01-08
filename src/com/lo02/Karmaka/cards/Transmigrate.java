@@ -6,14 +6,12 @@ import com.lo02.Karmaka.objects.Player;
 public class Transmigrate extends Card {
 
     public Transmigrate() {
-        super("Transmigration", 1, Color.BLUE,"Placez dans votre Main n’importequelle carte de votre Vie Future.");
+        super("Transmigration", 1, Color.BLUE,"Placez dans votre Main n’importe quelle carte de votre Vie Future.");
     }
 
     @Override
     public void activate(Player player) {
-        System.out.println("Placez dans notre Main n'importe quelle carte de votre Vie Future.");
-        //TODO
-        //action of the card
+        player.showFutureLife();
         player.getHand().add(player.getFutureLife().pickCard());
     }
 }
