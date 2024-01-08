@@ -5,6 +5,7 @@ import com.lo02.Karmaka.Main;
 import com.lo02.Karmaka.cards.Card;
 import com.lo02.Karmaka.cards.Stack;
 import com.lo02.Karmaka.enums.StateGame;
+import com.lo02.Karmaka.enums.Strategy;
 
 import java.io.*;
 
@@ -21,8 +22,68 @@ public class Game {
         // Initialisation de la partie
         stateGame = StateGame.INIT;
         System.out.println("************************* Initialisation de la partie *************************");
-        this.player1 = new Player();
-        this.player2 = new Player();
+        boolean pass = false;
+        String sc = null;
+        while (!pass) {
+            System.out.println("Veuillez choisir les joueurs ");
+            System.out.println("1 : 2 Joueurs réels");
+            System.out.println("2 : 1 Joueurs réel et un Joueur virtuel");
+            //System.out.println("3 : 2 Joueurs virtuels");
+            sc = Main.getInstance().getScanner().nextLine();
+            int choice = Integer.parseInt(sc);
+            if (choice >= 1 && choice <= 3) {
+                switch (sc) {
+                    case "1" -> {
+                        this.player1 = new Player();
+                        this.player2 = new Player();
+                        pass = true;
+                    }
+                    case "2" -> {
+                        this.player1 = new Player();
+
+                        // Choose the strategy of the bot
+                        boolean pass1 = false;
+                        while (!pass1) {
+                            System.out.println("Veuillez choisir la stratégie du bot : ");
+                            System.out.println("1 : Bot Offensif");
+                            System.out.println("2 : Bot Defensif");
+                            System.out.println("3 : Bot Random");
+                            sc = Main.getInstance().getScanner().nextLine();
+                            int choice1 = Integer.parseInt(sc);
+                            if (choice1 >= 1 && choice <= 3) {
+                                switch (sc) {
+                                    case "1" -> {
+                                        this.player2 = new VirtualPlayer(Strategy.OFFENSIVE);
+                                        pass1 = true;
+                                    }
+                                    case "2" -> {
+                                        this.player2 = new VirtualPlayer(Strategy.DEFENSIVE);
+
+                                        pass1 = true;
+                                    }
+                                    case "3" -> {
+                                        this.player2 = new VirtualPlayer(Strategy.RANDOM);
+                                        pass1 = true;
+                                    }
+                                }
+                            } else {
+                                System.out.println("Choix invalide.Veuillez choisir une autre configuration");
+                                pass = false;
+                            }
+                        }
+                        pass = true;
+                    }
+                   /* case "3" -> {
+                        this.player1 = new VirtualPlayer();
+                        this.player2 = new VirtualPlayer();
+                        pass = true;
+                    } */
+                }
+            } else {
+                System.out.println("Choix invalide.Veuillez choisir une autre configuration");
+                pass = false;
+            }
+        }
         this.well = new Stack();
         this.ruins = new Stack();
         this.cardManager.init();
@@ -65,6 +126,7 @@ public class Game {
             System.err.println("Erreur lors de la sauvegarde de la partie.");
         }
     }
+
     public static Game loadGame(String path) {
         try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(path))) {
             Game partie = (Game) ois.readObject();
