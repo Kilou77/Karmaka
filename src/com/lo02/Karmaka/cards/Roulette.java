@@ -21,7 +21,7 @@ public class Roulette extends Card {
         if (Integer.parseInt(sc) <= 2 && Integer.parseInt(sc) > 0) {
             for (int i = 1; i <= Integer.parseInt(sc); i++) {
                 player.showHand();
-                Main.getInstance().getGame().getRuins().addCard(player.playerPick());
+                Main.getInstance().getGame().getRuins().addCard(player.getHand().get(Main.getInstance().getRandom().nextInt(player.getHand().size())));
             }
             for (int i = 1; i <= Integer.parseInt(sc) + 1; i++) {
                 player.drawWell();

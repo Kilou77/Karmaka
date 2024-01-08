@@ -18,8 +18,8 @@ public class Dwindle extends Card {
         System.out.println("Choisissez un joueur : 1 pour vous, 2 pour l'adversaire");
         String sc = Main.getInstance().getScanner().nextLine();
         switch (sc) {
-            case "1" -> Main.getInstance().getGame().getRuins().addCard(player.playerPick());
-            case "2" -> Main.getInstance().getGame().getRuins().addCard(player.getOtherPlayer().playerPick());
+            case "1" -> Main.getInstance().getGame().getRuins().addCard(player.getHand().get(Main.getInstance().getRandom().nextInt(player.getHand().size())));
+            case "2" -> Main.getInstance().getGame().getRuins().addCard(player.getOtherPlayer().getHand().get(Main.getInstance().getRandom().nextInt(player.getHand().size())));
             default -> {
                 System.out.println("Veuillez rentrer une saisie valide.");
                 activate(player);

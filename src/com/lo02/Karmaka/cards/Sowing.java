@@ -1,5 +1,6 @@
 package com.lo02.Karmaka.cards;
 
+import com.lo02.Karmaka.Main;
 import com.lo02.Karmaka.enums.Color;
 import com.lo02.Karmaka.objects.Player;
 
@@ -13,7 +14,7 @@ public class Sowing extends Card {
     public void activate(Player player) {
         player.drawWell();
         player.drawWell();
-        player.getFutureLife().addCard(player.playerPick());
-        player.getFutureLife().addCard(player.playerPick());
+        player.getFutureLife().addCard(player.getHand().get(Main.getInstance().getRandom().nextInt(player.getHand().size())));
+        player.getFutureLife().addCard(player.getHand().get(Main.getInstance().getRandom().nextInt(player.getHand().size())));
     }
 }

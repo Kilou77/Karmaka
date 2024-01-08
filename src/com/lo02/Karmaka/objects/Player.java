@@ -140,7 +140,7 @@ public class Player {
         System.out.println("Vous disposez des oeuvres suivantes : " + txt);
     }
 
-    public Card playerPick(String deck){
+    public Card playerPick(){
         Card c = null;
         boolean pass = false;
         while (c == null || pass) {

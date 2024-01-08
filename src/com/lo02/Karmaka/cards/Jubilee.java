@@ -21,7 +21,7 @@ public class Jubilee extends Card {
         if (Integer.parseInt(sc) <= 2 && Integer.parseInt(sc) > 0) {
             for (int i = 1; i <= Integer.parseInt(sc); i++) {
                 player.showHand();
-                player.getDeeds().addCard(player.playerPick());
+                player.getDeeds().addCard(player.getHand().get(Main.getInstance().getRandom().nextInt(player.getHand().size())));
             }
         } else if (Integer.parseInt(sc) > 2) {
             System.out.println("Entrée invalide. Veuillez recommencer.");

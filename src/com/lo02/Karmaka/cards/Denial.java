@@ -1,4 +1,5 @@
 package com.lo02.Karmaka.cards;
+import com.lo02.Karmaka.Main;
 import com.lo02.Karmaka.enums.Color;
 import com.lo02.Karmaka.objects.Player;
 
@@ -13,7 +14,7 @@ public class Denial extends Card {
         //action of the card
         System.out.println("Choisissez une carte à défausser");
         player.showHand();
-        player.playerPick().activate(player);
+        player.getHand().get(Main.getInstance().getRandom().nextInt(player.getHand().size())).activate(player);
         System.out.println("Le pouvoir de cette carte sera appliqué");
     }
 }
