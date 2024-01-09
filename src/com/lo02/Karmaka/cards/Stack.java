@@ -1,9 +1,9 @@
 package com.lo02.Karmaka.cards;
 
 import com.lo02.Karmaka.Main;
+import com.lo02.Karmaka.objects.Player;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 public class Stack {
@@ -34,6 +34,16 @@ public class Stack {
         cards.remove(card);
         return card;
     }
+    // draw a card in any stack
+    public void drawCard(Stack stack) {
+        if (!cards.isEmpty()) {
+            Card c = takeCard();
+            stack.addCard(c);
+            System.out.println("Vous avez pioché la carte : " + c.getName() + " dans votre pile. Elle sera placée en dernière position dans votre pile "+ stack.getName());
+        } else {
+                System.out.println("Votre pile est vide, par conséquent, vous n'avez pas pioché");
+        }
+    }
 
     public Card pickCard() {
         Card c = null;
@@ -43,7 +53,7 @@ public class Stack {
             String sc = null;
 
             try {
-                System.out.println("Veuillez choisir le numéro associé à la carte présente dans votre main : ");
+                System.out.println("Veuillez choisir le numéro associé à la carte présente dans votre pile " + this.getName() + " : ");
                 sc = Main.getInstance().getScanner().nextLine();
                 int cardNumber = Integer.parseInt(sc);
 
@@ -83,7 +93,7 @@ public class Stack {
     public void showStack() {
         // show what is in the active player's hand
         StringBuilder txt = new StringBuilder();
-        if(cards != null){
+        if(!cards.isEmpty()){
             for (Card card : cards) {
                 txt.append(" ").append(cards.indexOf(card)).append(") ").append(card.getName());
             }
