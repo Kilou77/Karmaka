@@ -5,20 +5,29 @@ import com.lo02.Karmaka.cards.*;
 
 import java.lang.reflect.InvocationTargetException;
 import java.util.HashMap;
-
+/**
+ * La classe <code>CardManager</code> gère la liste des cartes disponibles dans le jeu Karmaka.
+ * Elle initialise la liste des cartes et génère la pioche de cartes.
+ */
 public class CardManager {
-
+    /**
+     * HashMap contenant la liste des cartes disponibles et leur quantité respective.
+     */
     HashMap<Class<? extends Card>, Integer> cardList = new HashMap<>();
-    //Création de la HashMap contenant l'ensemble des cartes du jeu
-
+    /**
+     * Initialise la liste des cartes et génère la pioche de cartes.
+     */
     public void init() {
         initCardList();
         generateWell();
     }
-
+    /**
+     * Initialise la liste des cartes avec leurs quantités respectives.
+     * Les cartes sont représentées par leur classe et leur nombre associés.
+     */
     public void initCardList() {
         /*cardList.put(AnotherDay.class,3);
-        cardList.put(Crisis.class,30);
+        cardList.put(Crisis.class,3);
         cardList.put(Denial.class,2);
         cardList.put(Destiny.class,2);
         cardList.put(Dwindle.class,2);
@@ -34,13 +43,18 @@ public class CardManager {
         cardList.put(Salvage.class,2);
         cardList.put(Sowing.class,2);
         cardList.put(Spite.class,2);
-        cardList.put(StolenDreams.class,36);
-        cardList.put(Swindle.class,36);*/
+        cardList.put(StolenDreams.class,3);
+        cardList.put(Swindle.class,3);*/
         cardList.put(Thievery.class,36);
-        /*cardList.put(Transmigrate.class,36);
-        cardList.put(Vengeance.class,36);
-        cardList.put(Voyage.class,36);*/
+        /*cardList.put(Transmigrate.class,3);
+        cardList.put(Vengeance.class,3);
+        cardList.put(Voyage.class,3);*/
     }
+    /**
+     * Génère la pioche de cartes en ajoutant les cartes à partir de la liste dans le jeu.
+     * Utilise une boucle for pour générer les cartes.
+     * En cas d'échec, lance une exception RuntimeException.
+     */
     public void generateWell() {
         for (Class<? extends Card> c : cardList.keySet()) {
             for (int i = 0; i < cardList.get(c); i++) {
