@@ -26,11 +26,10 @@ public class CardManager {
      * Les cartes sont représentées par leur classe et leur nombre associés.
      */
     public void initCardList() {
-        cardList.put(Embody.class,30);
-        /*cardList.put(AnotherDay.class,3);
+        cardList.put(AnotherDay.class,3);
         cardList.put(Crisis.class,3);
-        cardList.put(Denial.class,2);
-        cardList.put(Destiny.class,2);
+        cardList.put(Denial.class,3);
+        cardList.put(Destiny.class,3);
         cardList.put(Dwindle.class,2);
         cardList.put(Embody.class,2);
         cardList.put(HellsHeart.class,2);
@@ -38,18 +37,18 @@ public class CardManager {
         cardList.put(Longevity.class,2);
         cardList.put(Mimic.class,2);
         cardList.put(Panic.class,2);
-        cardList.put(Peek.class,2);
+        cardList.put(Peek.class,3);
         cardList.put(Recycle.class,2);
         cardList.put(Roulette.class,2);
         cardList.put(Salvage.class,2);
         cardList.put(Sowing.class,2);
         cardList.put(Spite.class,2);
         cardList.put(StolenDreams.class,3);
-        cardList.put(Swindle.class,3);*/
-        cardList.put(Thievery.class,36);
-        /*cardList.put(Transmigrate.class,3);
-        cardList.put(Vengeance.class,3);
-        cardList.put(Voyage.class,3);*/
+        cardList.put(Swindle.class,2);
+        cardList.put(Thievery.class,2);
+        cardList.put(Transmigrate.class,3);
+        cardList.put(Vengeance.class,2);
+        cardList.put(Voyage.class,2);
     }
     /**
      * Génère la pioche de cartes en ajoutant les cartes à partir de la liste dans le jeu.
