@@ -57,19 +57,35 @@ public abstract class Card {
         player.getFutureLife().addCard(this);
         System.out.println("Vous avez ajouté la carte: " + this.getName() + " à votre vie future");
     }
-
+    /**
+     * Obtient le nom de la carte.
+     *
+     * @return Le nom de la carte.
+     */
     public String getName() {
         return name;
     }
-
+    /**
+     * Obtient la description de la carte.
+     *
+     * @return La description de la carte.
+     */
     public String getDescription() {
         return description;
     }
-
+    /**
+     * Obtient la valeur en points de la carte.
+     *
+     * @return La valeur en points de la carte.
+     */
     public int getPoints() {
         return points;
     }
-
+    /**
+     * Obtient la couleur de la carte.
+     *
+     * @return La couleur de la carte.
+     */
     public Color getColor() {
         return color;
     }

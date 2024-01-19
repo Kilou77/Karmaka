@@ -2,13 +2,14 @@ package com.lo02.Karmaka.objects;
 
 
 import com.lo02.Karmaka.Main;
-import com.lo02.Karmaka.cards.Card;
 import com.lo02.Karmaka.cards.Stack;
 import com.lo02.Karmaka.enums.StateGame;
 import com.lo02.Karmaka.enums.Strategy;
-
 import java.io.*;
-
+/**
+ * Classe représentant une partie du jeu Karmaka.
+ * Gère l'initialisation, le déroulement et la sauvegarde/chargement de la partie.
+ */
 public class Game {
     private Player player1;
     private Player player2;

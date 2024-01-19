@@ -26,6 +26,7 @@ public class CardManager {
      * Les cartes sont représentées par leur classe et leur nombre associés.
      */
     public void initCardList() {
+        cardList.put(Embody.class,30);
         /*cardList.put(AnotherDay.class,3);
         cardList.put(Crisis.class,3);
         cardList.put(Denial.class,2);
